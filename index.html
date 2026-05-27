@@ -52,16 +52,34 @@
 
   <p>Iniciar Sesión</p>
 
-  <input type="text" placeholder="Nombre de Usuario">
+  <input id="username" type="text" placeholder="Nombre de Usuario">
 
-<input type="text" placeholder="Número Peruano">
+<input id="phone" type="text" placeholder="Número Peruano">
 
 <input type="password" placeholder="Contraseña">
 
-  <button onclick="window.location.href='vip.html'">
+<button onclick="login()">
 Ingresar
 </button>
 </div>
+<script>
 
+function login(){
+
+let username =
+document.getElementById("username").value;
+
+let phone =
+document.getElementById("phone").value;
+
+localStorage.setItem("username", username);
+
+localStorage.setItem("phone", phone);
+
+window.location.href = "vip.html";
+
+}
+
+</script>
 </body>
 </html>
