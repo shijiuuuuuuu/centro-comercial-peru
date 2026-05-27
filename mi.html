@@ -6,7 +6,81 @@
 <title>Mi Perfil</title>
 
 <style>
+.profile-card{
+max-width:380px;
+margin:20px auto;
+background:white;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+padding:20px;
+font-family:Arial;
+}
 
+.user-header{
+display:flex;
+gap:10px;
+align-items:center;
+border-bottom:1px solid #eee;
+padding-bottom:15px;
+}
+
+.avatar{
+font-size:40px;
+}
+
+.wallet-box{
+margin-top:15px;
+background:#f5f5f5;
+padding:15px;
+border-radius:12px;
+font-weight:bold;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+}
+
+.actions button{
+width:48%;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.actions button:first-child{
+background:#00c853;
+color:white;
+}
+
+.actions button:last-child{
+background:#d50000;
+color:white;
+}
+
+.menu a{
+display:flex;
+justify-content:space-between;
+padding:12px;
+border-bottom:1px solid #eee;
+text-decoration:none;
+color:#333;
+}
+
+.menu a span{
+margin-right:10px;
+}
+
+.logout{
+margin-top:15px;
+text-align:center;
+padding:12px;
+background:#111;
+color:white;
+border-radius:10px;
+}
 body{
 background:#111;
 color:white;
@@ -30,16 +104,68 @@ box-shadow:0 0 20px rgba(255,215,0,0.2);
 
 <body>
 
-<div class="card">
+<div class="profile-card">
 
-<h1>👤 Mi Perfil</h1>
+<div class="user-header">
 
-<p>Información del usuario</p>
+<div class="avatar">👤</div>
 
-<p>Cuenta activa</p>
+<div class="user-info">
+
+<h2>Info. del usuario</h2>
+
+<p>
+Número:
+<span id="showPhone"></span>
+</p>
+
+<p>
+Usuario:
+<span id="showUser"></span>
+</p>
 
 </div>
 
+</div>
+
+<div class="wallet-box">
+
+💰 Saldo: S/ 10.00
+
+</div>
+
+<div class="actions">
+
+<button>Recargar</button>
+<button>RETIRAR</button>
+
+</div>
+
+<div class="menu">
+
+<a href="#"><span>📄</span> Registros de recarga</a>
+<a href="#"><span>📤</span> Registros de retiro</a>
+<a href="#"><span>🧾</span> Registros de trabajo</a>
+<a href="#"><span>🛠️</span> Servicios</a>
+<a href="#"><span>🔔</span> Notificaciones</a>
+<a href="#"><span>⚙️</span> Configuración</a>
+<a href="#"><span>🔗</span> Información de enlace</a>
+<a href="#"><span>🌐</span> Idioma</a>
+
+</div>
+
+<div class="logout">
+CERRAR SESIÓN
+</div>
+
+</div>
 </body>
 
 </html>
+<script>
+document.getElementById("showUser").innerText =
+localStorage.getItem("username");
+
+document.getElementById("showPhone").innerText =
+localStorage.getItem("phone");
+</script>
