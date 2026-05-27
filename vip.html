@@ -5,11 +5,12 @@
 
 <style>
 body{
-background:#111;
+background:linear-gradient(to bottom,#000,#1a1a1a);
 color:white;
 font-family:Arial;
 text-align:center;
 padding:40px;
+overflow-x:hidden;
 }
 
 .vip{
@@ -28,11 +29,66 @@ border-radius:10px;
 background:gold;
 font-weight:bold;
 cursor:pointer;
+}.slider{
+overflow:hidden;
+position:relative;
+width:100%;
+height:180px;
+margin-bottom:40px;
+}
+
+.slide-track{
+display:flex;
+width:2500px;
+animation:scroll 20s linear infinite;
+}
+
+.slide-track img{
+width:220px;
+height:160px;
+object-fit:cover;
+margin:10px;
+border-radius:20px;
+box-shadow:0 0 15px rgba(255,255,255,0.2);
+}
+
+@keyframes scroll{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-1200px);
+}
+
 }
 </style>
 </head>
 
 <body>
+
+<div class="slider">
+
+<div class="slide-track">
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400">
+
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400">
+
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400">
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400">
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400">
+
+</div>
+
+</div>
+
+<h1 style="color:gold;">VIP Levels</h1>
 
 <h1 style="color:gold;">VIP Levels</h1>
 
