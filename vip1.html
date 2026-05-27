@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VIP 1 Tasks</title>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:20px;
+}
+
+h1{
+color:gold;
+}
+
+.card{
+background:#1e1e1e;
+padding:20px;
+margin:15px auto;
+width:320px;
+border-radius:20px;
+box-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:gold;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+.completed{
+background:green;
+color:white;
+}
+
+#result{
+display:none;
+background:#222;
+padding:20px;
+margin-top:30px;
+border-radius:20px;
+width:320px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 0 15px rgba(0,255,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>VIP 1</h1>
+
+<p>Pedidos Completados:
+<span id="count">0</span>/12
+</p>
+
+<div id="tasks"></div>
+
+<div id="result">
+
+<h2>12/12 COMPLETADO</h2>
+
+<h3>Ganancia Total</h3>
+
+<h1>S/ 35.23</h1>
+
+</div>
+
+<script>
+
+let completed = 0;
+
+const tasksDiv = document.getElementById("tasks");
+
+for(let i=1; i<=12; i++){
+
+let orderAmount = (Math.random()*20+5).toFixed(2);
+
+let commission = (Math.random()*3+1).toFixed(2);
+
+let card = document.createElement("div");
+
+card.className = "card";
+
+card.innerHTML = `
+
+<h3>Pedido ${i}</h3>
+
+<p>Monto del Pedido:
+S/ ${orderAmount}</p>
+
+<p>Comisión:
+S/ ${commission}</p>
+
+<button onclick="completeTask(this)">
+Completar Pedido
+</button>
+
+`;
+
+tasksDiv.appendChild(card);
+
+}
+
+function completeTask(btn){
+
+if(btn.classList.contains("completed")){
+return;
+}
+
+btn.classList.add("completed");
+
+btn.innerText = "Completado";
+
+completed++;
+
+document.getElementById("count").innerText = completed;
+
+if(completed == 12){
+
+document.getElementById("result").style.display = "block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
