@@ -137,9 +137,13 @@ font-size:16px;
 
 <p><strong>Monto:</strong> S/ 10.00</p>
 
-<p><strong>Usuario:</strong> usuario_peru</p>
+<p><strong>Usuario:</strong>
+<span id="showUser"></span>
+</p>
 
-<p><strong>Número:</strong> +51 987654321</p>
+<p><strong>Número:</strong>
+<span id="showPhone"></span>
+</p>
 
 </div></h1>
 
@@ -180,6 +184,14 @@ Entrar
 <p>66 Tasks</p>
 <button>Entrar</button>
 </div>
+<script>
 
+document.getElementById("showUser").innerText =
+localStorage.getItem("username");
+
+document.getElementById("showPhone").innerText =
+localStorage.getItem("phone");
+
+</script>
 </body>
 </html>
