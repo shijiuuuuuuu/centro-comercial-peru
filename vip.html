@@ -341,7 +341,19 @@ Mi
 </a>
 
 </div>
+<script>
+if(!localStorage.getItem("balance")){
+localStorage.setItem("balance","10");
+}
 
+function getBalance(){
+return parseFloat(localStorage.getItem("balance"));
+}
+
+function setBalance(value){
+localStorage.setItem("balance",value);
+}
+</script>
 </body>
 </html>
 </body>
