@@ -1,239 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP Levels</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#f3f6fb;
-padding-bottom:90px;
-}
-
-/* HEADER */
-
-.header{
-background:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-}
-
-.logo{
-font-size:22px;
-font-weight:bold;
-color:#1565c0;
-}
-
-/* WALLET */
-
-.wallet{
-margin:15px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
-padding:20px;
-border-radius:18px;
-color:white;
-}
-
-.wallet h2{
-margin:0;
-font-size:14px;
-opacity:0.9;
-}
-
-.wallet h1{
-margin-top:10px;
-font-size:36px;
-}
-
-/* GRID */
-
-.grid{
-padding:15px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-/* CARD */
-
-.card{
-background:white;
-border-radius:16px;
-padding:15px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-.level{
-background:#1565c0;
-color:white;
-display:inline-block;
-padding:5px 10px;
-border-radius:12px;
-font-size:12px;
-margin-bottom:10px;
-}
-
-.card h3{
-margin:0;
-}
-
-.card p{
-font-size:13px;
-color:#666;
-}
-
-.btn{
-width:100%;
-padding:10px;
-border:none;
-border-radius:10px;
-background:#1565c0;
-color:white;
-margin-top:10px;
-cursor:pointer;
-}
-
-/* NAV */
-
-.nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:10px;
-box-shadow:0 -2px 10px rgba(0,0,0,0.08);
-}
-
-.nav a{
-text-decoration:none;
-color:#666;
-font-size:12px;
-text-align:center;
-}
-
-.active{
-color:#1565c0;
-}
-
-</style>
+<title>VIP</title>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-<div class="logo">VIP CENTER</div>
-<div>🔥</div>
-</div>
+<h2>VIP Orders</h2>
 
-<!-- WALLET -->
-<div class="wallet">
-<h2>Saldo disponible</h2>
-<h1>S/ <span id="balance">10.00</span></h1>
-</div>
+<p id="count">0/12</p>
 
-<!-- GRID -->
-<div class="grid">
-
-<div class="card">
-<div class="level">VIP1</div>
-<h3>12 Orders</h3>
-<p>Required: S/ 30</p>
-<button class="btn" onclick="goVIP(1,30,12,'vip1.html')">Start</button>
-</div>
-
-<div class="card">
-<div class="level">VIP2</div>
-<h3>26 Orders</h3>
-<p>Required: S/ 50</p>
-<button class="btn" onclick="goVIP(2,50,26,'vip2.html')">Locked</button>
-</div>
-
-<div class="card">
-<div class="level">VIP3</div>
-<h3>36 Orders</h3>
-<p>Required: S/ 100</p>
-<button class="btn" onclick="goVIP(3,100,36,'vip3.html')">Locked</button>
-</div>
-
-<div class="card">
-<div class="level">VIP4</div>
-<h3>48 Orders</h3>
-<p>Required: S/ 300</p>
-<button class="btn" onclick="goVIP(4,300,48,'vip4.html')">Locked</button>
-</div>
-
-<div class="card">
-<div class="level">VIP5</div>
-<h3>60 Orders</h3>
-<p>Required: S/ 500</p>
-<button class="btn" onclick="goVIP(5,500,60,'vip5.html')">Locked</button>
-</div>
-
-<div class="card">
-<div class="level">VIP6</div>
-<h3>70 Orders</h3>
-<p>Required: S/ 1000</p>
-<button class="btn" onclick="goVIP(6,1000,70,'vip6.html')">Locked</button>
-</div>
-
-</div>
-
-<!-- NAV -->
-<div class="nav">
-<a class="active" href="vip.html">🏠<br>Home</a>
-<a href="pedidos.html">📦<br>Orders</a>
-<a href="trabajo.html">💼<br>Work</a>
-<a href="mi.html">👤<br>Me</a>
-</div>
+<button onclick="doOrder()">Order</button>
 
 <script>
 
-/* BALANCE */
-let balance = parseFloat(localStorage.getItem("balance") || 10);
-document.getElementById("balance").innerText = balance.toFixed(2);
+let count = localStorage.getItem("orders") || 0;
 
-/* VIP FUNCTION */
+function update(){
+document.getElementById("count").innerText = count + "/12";
+}
 
-function goVIP(vip, required, orders, page){
+function doOrder(){
 
-let bal = parseFloat(localStorage.getItem("balance") || 0);
-let current = parseInt(localStorage.getItem("currentVIP") || 0);
-
-/* CHECK BALANCE */
-if(bal < required){
-alert("Insufficient balance for VIP" + vip);
+if(count >= 12){
+alert("VIP completed");
 return;
 }
 
-/* CHECK VIP FLOW */
-if(vip > current + 1){
-alert("Complete previous VIP first");
-return;
+count++;
+localStorage.setItem("orders",count);
+
+update();
 }
 
-/* SAVE DATA */
-localStorage.setItem("currentVIP", vip);
-localStorage.setItem("vipOrdersLimit", orders);
-localStorage.setItem("vipOrdersCompleted", 0);
-
-/* REDIRECT */
-window.location.href = page;
-
-}
+update();
 
 </script>
 
