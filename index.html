@@ -1,382 +1,124 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Login</title>
+<title>Centro Comercial Per煤</title>
 
 <style>
 
 body{
-margin:0;
+background:#000;
 font-family:Arial;
-background:#f4f7fb;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+margin:0;
 }
 
-/* CONTAINER */
-
-.container{
-width:92%;
-max-width:420px;
-background:white;
-padding:35px;
-border-radius:28px;
-box-shadow:0 6px 20px rgba(0,0,0,0.08);
-}
-
-/* LOGO */
-
-.logo{
+.card{
+background:#1e1e1e;
+padding:40px;
+border-radius:20px;
+width:320px;
 text-align:center;
-font-size:34px;
-font-weight:bold;
-color:#1565c0;
-margin-bottom:10px;
+box-shadow:0 0 30px rgba(255,215,0,0.3);
 }
 
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:30px;
+h1{
+color:gold;
 }
 
-/* INPUTS */
-
-.input-box{
-margin-bottom:20px;
-}
-
-.input-box label{
-display:block;
-margin-bottom:8px;
-font-size:14px;
-color:#555;
-}
-
-.input-box input{
-width:100%;
-padding:16px;
-border:none;
-border-radius:16px;
-background:#f1f4f8;
-font-size:15px;
-outline:none;
-}
-
-/* BUTTONS */
-
-.btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:16px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
+p{
 color:white;
-font-size:16px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#eee;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:gold;
+border:none;
+border-radius:10px;
 font-weight:bold;
 cursor:pointer;
-margin-top:10px;
 }
 
-.switch{
-text-align:center;
-margin-top:18px;
-color:#1565c0;
-cursor:pointer;
-font-size:14px;
-}
-
-/* ALERT */
-
-.alert{
+a{
+display:block;
 margin-top:15px;
-padding:14px;
-border-radius:14px;
-font-size:14px;
-display:none;
-}
-
-.success{
-background:#e8f5e9;
-color:#2e7d32;
-}
-
-.error{
-background:#ffebee;
-color:#c62828;
+color:white;
+text-decoration:none;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-<div class="logo">
-VIP CENTER
-</div>
+<h1>Centro Comercial Per煤</h1>
 
-<div class="subtitle">
-Sistema profesional de tareas VIP
-</div>
-
-<!-- LOGIN -->
-
-<div id="loginBox">
-
-<div class="input-box">
-
-<label>
-Número o usuario
-</label>
+<p>Iniciar Sesi贸n</p>
 
 <input type="text"
-id="loginUser"
-placeholder="Ingrese usuario">
-
-</div>
-
-<div class="input-box">
-
-<label>
-Contraseña
-</label>
+id="user"
+placeholder="Usuario o tel茅fono">
 
 <input type="password"
-id="loginPass"
-placeholder="Ingrese contraseña">
+id="pass"
+placeholder="Contrase帽a">
 
-</div>
-
-<button class="btn"
-onclick="login()">
-
-INICIAR SESIÓN
-
+<button onclick="login()">
+Ingresar
 </button>
 
-<div class="switch"
-onclick="showRegister()">
-
-Crear cuenta nueva
-
-</div>
-
-<div class="alert error"
-id="loginError">
-
-Datos incorrectos
-
-</div>
-
-</div>
-
-<!-- REGISTER -->
-
-<div id="registerBox"
-style="display:none;">
-
-<div class="input-box">
-
-<label>
-Número telefónico
-</label>
-
-<input type="text"
-id="regPhone"
-placeholder="Ingrese número">
-
-</div>
-
-<div class="input-box">
-
-<label>
-Nombre de usuario
-</label>
-
-<input type="text"
-id="regUser"
-placeholder="Ingrese usuario">
-
-</div>
-
-<div class="input-box">
-
-<label>
-Contraseña
-</label>
-
-<input type="password"
-id="regPass"
-placeholder="Ingrese contraseña">
-
-</div>
-
-<button class="btn"
-onclick="register()">
-
-CREAR CUENTA
-
-</button>
-
-<div class="switch"
-onclick="showLogin()">
-
-Ya tengo cuenta
-
-</div>
-
-<div class="alert success"
-id="registerSuccess">
-
-Cuenta creada correctamente
-
-</div>
-
-</div>
+<a href="register.html">
+Crear cuenta
+</a>
 
 </div>
 
 <script>
 
-/* SHOW PAGES */
-
-function showRegister(){
-
-document.getElementById("loginBox")
-.style.display = "none";
-
-document.getElementById("registerBox")
-.style.display = "block";
-
-}
-
-function showLogin(){
-
-document.getElementById("registerBox")
-.style.display = "none";
-
-document.getElementById("loginBox")
-.style.display = "block";
-
-}
-
-/* REGISTER */
-
-function register(){
-
-let phone =
-document.getElementById("regPhone").value;
-
-let user =
-document.getElementById("regUser").value;
-
-let pass =
-document.getElementById("regPass").value;
-
-if(
-phone === "" ||
-user === "" ||
-pass === ""
-){
-
-alert("Complete todos los campos");
-return;
-
-}
-
-/* SAVE */
-
-localStorage.setItem(
-"userPhone",
-phone
-);
-
-localStorage.setItem(
-"username",
-user
-);
-
-localStorage.setItem(
-"password",
-pass
-);
-
-/* DEFAULT BALANCE */
-
-if(!localStorage.getItem("balance")){
-
-localStorage.setItem(
-"balance",
-10
-);
-
-}
-
-/* SUCCESS */
-
-document.getElementById(
-"registerSuccess"
-).style.display = "block";
-
-/* AUTO SWITCH */
-
-setTimeout(()=>{
-
-showLogin();
-
-},1500);
-
-}
-
-/* LOGIN */
-
 function login(){
 
 let user =
-document.getElementById("loginUser")
-.value;
+document.getElementById("user").value;
 
 let pass =
-document.getElementById("loginPass")
-.value;
+document.getElementById("pass").value;
 
 let savedUser =
 localStorage.getItem("username");
 
 let savedPhone =
-localStorage.getItem("userPhone");
+localStorage.getItem("phone");
 
 let savedPass =
 localStorage.getItem("password");
 
-/* CHECK */
-
 if(
-(user === savedUser ||
-user === savedPhone)
+(user === savedUser || user === savedPhone)
 &&
 pass === savedPass
 ){
 
-window.location.href =
-"vip.html";
+window.location.href = "vip.html";
 
 }else{
 
-document.getElementById(
-"loginError"
-).style.display = "block";
+alert("Datos incorrectos");
 
 }
 
