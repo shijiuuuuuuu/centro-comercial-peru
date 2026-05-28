@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Centro Comercial Perú - VIP</title>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>VIP Levels</title>
 
 <style>
 
@@ -12,157 +15,151 @@ body{
 margin:0;
 font-family:Arial;
 background:#f3f6fb;
-padding-bottom:90px;
+padding-bottom:100px;
 }
 
 /* HEADER */
 
-.topbar{
+.header{
 background:white;
-padding:18px;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
-border-bottom-left-radius:20px;
-border-bottom-right-radius:20px;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .logo{
-font-size:24px;
+font-size:26px;
 font-weight:bold;
 color:#1565c0;
 }
 
-/* BALANCE */
+/* WALLET */
 
-.balance-box{
+.wallet-box{
 margin:20px;
-background:linear-gradient(135deg,#1565c0,#1e88e5);
-padding:20px;
-border-radius:20px;
+background:linear-gradient(135deg,#1565c0,#42a5f5);
+padding:24px;
+border-radius:24px;
 color:white;
-box-shadow:0 5px 15px rgba(0,0,0,0.15);
+box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 
-.balance-box h2{
+.wallet-box h3{
 margin:0;
-font-size:16px;
+font-size:15px;
 opacity:0.9;
 }
 
-.balance{
-font-size:38px;
-font-weight:bold;
-margin-top:10px;
+.wallet-box h1{
+margin-top:12px;
+font-size:42px;
 }
 
-/* USER */
+/* TASK COUNTER */
 
-.user-box{
-margin-top:15px;
+.task-box{
+margin:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.task-card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 2px 12px rgba(0,0,0,0.06);
+text-align:center;
+}
+
+.task-card h3{
+margin:0;
 font-size:14px;
-line-height:24px;
+color:#666;
+}
+
+.task-card h2{
+margin-top:10px;
+color:#1565c0;
 }
 
 /* VIP GRID */
 
 .vip-grid{
+padding:20px;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:15px;
-padding:20px;
+gap:18px;
 }
 
 /* VIP CARD */
 
 .vip-card{
 background:white;
-border-radius:20px;
-padding:18px;
-text-align:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-transition:0.2s;
-position:relative;
+border-radius:24px;
 overflow:hidden;
+box-shadow:0 4px 16px rgba(0,0,0,0.08);
+transition:0.2s;
 }
 
 .vip-card:hover{
-transform:translateY(-4px);
+transform:translateY(-3px);
 }
 
-.vip-card::before{
-content:"";
-position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:linear-gradient(
-45deg,
-transparent,
-rgba(255,255,255,0.4),
-transparent
-);
-transform:rotate(25deg);
-animation:shine 4s linear infinite;
+.vip-card img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
-@keyframes shine{
-0%{
-transform:translateX(-100%) rotate(25deg);
-}
-100%{
-transform:translateX(100%) rotate(25deg);
-}
+.vip-content{
+padding:18px;
 }
 
-.vip-title{
+.vip-level{
+display:inline-block;
+padding:6px 14px;
+background:#1565c0;
+color:white;
+border-radius:20px;
+font-size:13px;
+margin-bottom:12px;
+}
+
+.vip-content h2{
+margin:0;
 font-size:22px;
-font-weight:bold;
-color:#1565c0;
 }
 
-.vip-profit{
-margin-top:10px;
-font-size:15px;
-color:#444;
+.vip-content p{
+margin-top:8px;
+color:#666;
+font-size:14px;
+}
+
+.vip-info{
+margin-top:14px;
+display:flex;
+justify-content:space-between;
+font-size:14px;
 }
 
 .vip-btn{
-margin-top:15px;
 width:100%;
-padding:12px;
+padding:15px;
+margin-top:18px;
 border:none;
-border-radius:12px;
-background:#1565c0;
+border-radius:16px;
+background:linear-gradient(135deg,#1565c0,#42a5f5);
 color:white;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* TASK */
-
-.task-box{
-background:white;
-margin:0 20px 20px;
-padding:18px;
-border-radius:18px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-.task-title{
 font-size:16px;
 font-weight:bold;
-color:#444;
-}
-
-.task-count{
-margin-top:10px;
-font-size:26px;
-font-weight:bold;
-color:#1565c0;
+cursor:pointer;
 }
 
 /* BOTTOM NAV */
@@ -197,70 +194,71 @@ color:#1565c0 !important;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- TOPBAR -->
+<!-- HEADER -->
 
-<div class="topbar">
+<div class="header">
 
 <div class="logo">
-Centro Comercial
+VIP CENTER
 </div>
 
 <div>
-🌐
+🔥
 </div>
 
 </div>
 
-<!-- BALANCE -->
+<!-- WALLET -->
 
-<div class="balance-box">
+<div class="wallet-box">
 
-<h2>
+<h3>
 Saldo disponible
-</h2>
+</h3>
 
-<div class="balance">
+<h1>
 S/
 <span id="balance">
 10.00
 </span>
-</div>
-
-<div class="user-box">
-
-<div>
-👤
-<span id="showUser">
-Usuario
-</span>
-</div>
-
-<div>
-📱
-<span id="showPhone">
-999999999
-</span>
-</div>
+</h1>
 
 </div>
 
-</div>
-
-<!-- TASK -->
+<!-- TASK COUNTER -->
 
 <div class="task-box">
 
-<div class="task-title">
-Órdenes completadas
+<div class="task-card">
+
+<h3>
+VIP1 Orders
+</h3>
+
+<h2 id="vip1count">
+0 / 12
+</h2>
+
 </div>
 
-<div class="task-count"
-id="taskCount">
-0
+<div class="task-card">
+
+<h3>
+Ingresos totales
+</h3>
+
+<h2>
+S/
+<span id="earnings">
+0.00
+</span>
+</h2>
+
 </div>
 
 </div>
@@ -269,123 +267,196 @@ id="taskCount">
 
 <div class="vip-grid">
 
-<!-- VIP 1 -->
+<!-- VIP1 -->
 
 <div class="vip-card">
 
-<div class="vip-title">
-VIP 1
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+
+<div class="vip-content">
+
+<div class="vip-level">
+VIP1
 </div>
 
-<div class="vip-profit">
-Ganancia: S/ 5
+<h2>
+Amazon Tasks
+</h2>
+
+<p>
+12 pedidos diarios con ganancias automáticas.
+</p>
+
+<div class="vip-info">
+
+<span>
+Comisión:
+<strong>
+S/ 8 - 12
+</strong>
+</span>
+
+<span>
+Órdenes:
+<strong>
+12
+</strong>
+</span>
+
 </div>
 
-<button
-class="vip-btn"
-onclick="completeOrder(5)">
-Ordenar
+<button class="vip-btn"
+onclick="window.location.href='vip1.html'">
+
+Entrar VIP1
+
 </button>
 
 </div>
 
-<!-- VIP 2 -->
+</div>
+
+<!-- VIP2 -->
 
 <div class="vip-card">
 
-<div class="vip-title">
-VIP 2
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
+<div class="vip-content">
+
+<div class="vip-level">
+VIP2
 </div>
 
-<div class="vip-profit">
-Ganancia: S/ 10
+<h2>
+SHEIN Tasks
+</h2>
+
+<p>
+20 pedidos diarios con comisión premium.
+</p>
+
+<div class="vip-info">
+
+<span>
+Comisión:
+<strong>
+S/ 15
+</strong>
+</span>
+
+<span>
+Órdenes:
+<strong>
+20
+</strong>
+</span>
+
 </div>
 
-<button
-class="vip-btn"
-onclick="completeOrder(10)">
-Ordenar
+<button class="vip-btn">
+
+Bloqueado
+
 </button>
 
 </div>
 
-<!-- VIP 3 -->
+</div>
+
+<!-- VIP3 -->
 
 <div class="vip-card">
 
-<div class="vip-title">
-VIP 3
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+
+<div class="vip-content">
+
+<div class="vip-level">
+VIP3
 </div>
 
-<div class="vip-profit">
-Ganancia: S/ 20
+<h2>
+Luxury Orders
+</h2>
+
+<p>
+Órdenes avanzadas con mayores beneficios.
+</p>
+
+<div class="vip-info">
+
+<span>
+Comisión:
+<strong>
+S/ 25
+</strong>
+</span>
+
+<span>
+Órdenes:
+<strong>
+30
+</strong>
+</span>
+
 </div>
 
-<button
-class="vip-btn"
-onclick="completeOrder(20)">
-Ordenar
+<button class="vip-btn">
+
+Bloqueado
+
 </button>
 
 </div>
 
-<!-- VIP 4 -->
+</div>
+
+<!-- VIP4 -->
 
 <div class="vip-card">
 
-<div class="vip-title">
-VIP 4
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+
+<div class="vip-content">
+
+<div class="vip-level">
+VIP4
 </div>
 
-<div class="vip-profit">
-Ganancia: S/ 40
+<h2>
+Premium Store
+</h2>
+
+<p>
+Sistema exclusivo de tareas internacionales.
+</p>
+
+<div class="vip-info">
+
+<span>
+Comisión:
+<strong>
+S/ 40
+</strong>
+</span>
+
+<span>
+Órdenes:
+<strong>
+40
+</strong>
+</span>
+
 </div>
 
-<button
-class="vip-btn"
-onclick="completeOrder(40)">
-Ordenar
+<button class="vip-btn">
+
+Bloqueado
+
 </button>
 
 </div>
-
-<!-- VIP 5 -->
-
-<div class="vip-card">
-
-<div class="vip-title">
-VIP 5
-</div>
-
-<div class="vip-profit">
-Ganancia: S/ 80
-</div>
-
-<button
-class="vip-btn"
-onclick="completeOrder(80)">
-Ordenar
-</button>
-
-</div>
-
-<!-- VIP 6 -->
-
-<div class="vip-card">
-
-<div class="vip-title">
-VIP 6
-</div>
-
-<div class="vip-profit">
-Ganancia: S/ 150
-</div>
-
-<button
-class="vip-btn"
-onclick="completeOrder(150)">
-Ordenar
-</button>
 
 </div>
 
@@ -397,105 +468,73 @@ Ordenar
 
 <a href="vip.html"
 class="active">
+
 <span>🏠</span>
 Inicio
+
 </a>
 
 <a href="pedidos.html">
+
 <span>📦</span>
 Pedidos
+
 </a>
 
 <a href="trabajo.html">
+
 <span>💼</span>
 Trabajo
+
 </a>
 
 <a href="mi.html">
+
 <span>👤</span>
 Mi
+
 </a>
 
 </div>
 
 <script>
 
-/* USER INFO */
-
-document.getElementById("showUser").innerText =
-localStorage.getItem("username") || "Usuario";
-
-document.getElementById("showPhone").innerText =
-localStorage.getItem("phone") || "999999999";
-
 /* BALANCE */
 
 let balance =
-parseFloat(localStorage.getItem("balance")) || 10;
+parseFloat(
+localStorage.getItem("balance")
+|| 10
+);
 
-document.getElementById("balance").innerText =
+document.getElementById("balance")
+.innerText =
 balance.toFixed(2);
 
-/* TASK COUNT */
+/* VIP1 ORDERS */
 
-let orders =
-parseInt(localStorage.getItem("orders")) || 0;
-
-document.getElementById("taskCount").innerText =
-orders;
-
-/* COMPLETE ORDER */
-
-function completeOrder(amount){
-
-let currentBalance =
-parseFloat(localStorage.getItem("balance")) || 10;
-
-currentBalance += amount;
-
-localStorage.setItem(
-"balance",
-currentBalance.toFixed(2)
+let vip1orders =
+parseInt(
+localStorage.getItem("vip1orders")
+|| 0
 );
 
-document.getElementById("balance").innerText =
-currentBalance.toFixed(2);
+document.getElementById("vip1count")
+.innerText =
+vip1orders + " / 12";
 
-/* ORDER COUNT */
+/* EARNINGS */
 
-let currentOrders =
-parseInt(localStorage.getItem("orders")) || 0;
+let earnings =
+balance - 10;
 
-currentOrders++;
-
-localStorage.setItem(
-"orders",
-currentOrders
-);
-
-document.getElementById("taskCount").innerText =
-currentOrders;
-
-/* HISTORY */
-
-let history =
-JSON.parse(localStorage.getItem("history")) || [];
-
-history.push({
-amount:amount,
-date:new Date().toLocaleString()
-});
-
-localStorage.setItem(
-"history",
-JSON.stringify(history)
-);
-
-alert(
-"Orden completada + S/ " + amount
-);
-
+if(earnings < 0){
+earnings = 0;
 }
+
+document.getElementById("earnings")
+.innerText =
+earnings.toFixed(2);
 
 </script>
 
