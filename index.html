@@ -1,51 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
 <title>Login</title>
-<style>
-body{margin:0;font-family:Arial;background:#1565c0;display:flex;justify-content:center;align-items:center;height:100vh;}
-.box{background:white;padding:20px;border-radius:12px;width:90%;max-width:350px;}
-input,button{width:100%;padding:10px;margin-top:10px;}
-button{background:#1565c0;color:white;border:none;}
-</style>
 </head>
 
 <body>
 
-<div class="box">
-<h2>Iniciar sesión</h2>
+<div class="card">
+<h2>Login</h2>
 
-<input id="phone" placeholder="Usuario o teléfono">
-<input id="pass" type="password" placeholder="Contraseña">
+<input id="phone" placeholder="Phone / Username">
+<input id="pass" type="password" placeholder="Password">
 
-<button onclick="login()">Entrar</button>
+<button class="btn" onclick="login()">Login</button>
 
-<p><a href="register.html">Crear cuenta</a></p>
+<p><a href="register.html">Create Account</a></p>
 </div>
 
-<script>
-
-function login(){
-
-let users = JSON.parse(localStorage.getItem("users") || "[]");
-
-let phone = document.getElementById("phone").value;
-let pass = document.getElementById("pass").value;
-
-let user = users.find(u => u.phone === phone && u.password === pass);
-
-if(!user){
-alert("Error de login");
-return;
-}
-
-localStorage.setItem("currentUser", JSON.stringify(user));
-
-window.location.href="home.html";
-}
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
