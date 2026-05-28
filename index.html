@@ -52,13 +52,13 @@
 
   <p>Iniciar Sesión</p>
 
-  <input id="username" type="text" placeholder="Nombre de Usuario">
+  <input type="text" id="user" placeholder="Usuario o teléfono">
 
-<input id="phone" type="text" placeholder="Número Peruano">
-
-<input type="password" placeholder="Contraseña">
+<input type="password" id="pass" placeholder="Contraseña">
 
 <button onclick="login()">
+Ingresar
+</button>
 Ingresar
 </button>
 </div>
@@ -66,19 +66,38 @@ Ingresar
 
 function login(){
 
-let username =
-document.getElementById("username").value;
+let user =
+document.getElementById("user").value;
 
-let phone =
-document.getElementById("phone").value;
+let pass =
+document.getElementById("pass").value;
 
-localStorage.setItem("username", username);
+let savedUser =
+localStorage.getItem("username");
 
-localStorage.setItem("phone", phone);
+let savedPhone =
+localStorage.getItem("phone");
+
+let savedPass =
+localStorage.getItem("password");
+
+if(
+(user === savedUser || user === savedPhone)
+&&
+pass === savedPass
+){
 
 window.location.href = "vip.html";
 
+}else{
+
+alert("Datos incorrectos");
+
 }
+
+}
+
+</script>
 
 </script>
 </body>
