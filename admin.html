@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6fb;
+}
+
+.header{
+background:#1565c0;
+color:white;
+padding:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+.box{
+margin:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.btn{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:5px;
+}
+
+.approve{
+background:#2e7d32;
+color:white;
+}
+
+.reject{
+background:#c62828;
+color:white;
+}
+
+.blue{
+background:#1565c0;
+color:white;
+}
+
+.user{
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+ADMIN PANEL
+</div>
+
+<div class="box">
+<h3>Users (LocalStorage Demo)</h3>
+
+<div id="userList"></div>
+
+</div>
+
+<div class="box">
+
+<h3>Quick Actions</h3>
+
+<button class="btn blue" onclick="addFakeUser()">
+Add Fake User
+</button>
+
+<button class="btn blue" onclick="resetAll()">
+Reset System
+</button>
+
+</div>
+
+<script>
+
+/* LOAD USERS */
+
+function loadUsers(){
+
+let users =
+JSON.parse(localStorage.getItem("users") || "[]");
+
+let html = "";
+
+users.forEach((u, index)=>{
+
+html += `
+<div class="user">
+
+<b>${u.name}</b><br>
+Balance: S/ ${u.balance}<br>
+Status: ${u.status}<br>
+
+<button class="btn approve"
+onclick="approve(${index})">
+Approve
+</button>
+
+<button class="btn reject"
+onclick="reject(${index})">
+Reject
+</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("userList").innerHTML = html;
+
+}
+
+/* APPROVE USER */
+
+function approve(i){
+
+let users =
+JSON.parse(localStorage.getItem("users") || "[]");
+
+users[i].status = "approved";
+
+users[i].balance += 50; // bonus
+
+localStorage.setItem("users", JSON.stringify(users));
+
+loadUsers();
+
+}
+
+/* REJECT USER */
+
+function reject(i){
+
+let users =
+JSON.parse(localStorage.getItem("users") || "[]");
+
+users[i].status = "rejected";
+
+localStorage.setItem("users", JSON.stringify(users));
+
+loadUsers();
+
+}
+
+/* FAKE USER */
+
+function addFakeUser(){
+
+let users =
+JSON.parse(localStorage.getItem("users") || "[]");
+
+users.push({
+name: "User " + (users.length + 1),
+balance: 0,
+status: "pending"
+});
+
+localStorage.setItem("users", JSON.stringify(users));
+
+loadUsers();
+
+}
+
+/* RESET */
+
+function resetAll(){
+
+localStorage.clear();
+alert("System Reset Done");
+loadUsers();
+
+}
+
+loadUsers();
+
+</script>
+
+</body>
+</html>
