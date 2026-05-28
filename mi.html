@@ -166,6 +166,36 @@ background:#263238;
 color:white;
 border-radius:10px;
 font-weight:bold;
+}.user-box{
+margin-top:10px;
+background:#f9fafc;
+padding:12px;
+border-radius:12px;
+border:1px solid #eee;
+}
+
+.user-row{
+display:flex;
+align-items:center;
+gap:8px;
+padding:6px 0;
+font-size:14px;
+color:#333;
+}
+
+.icon{
+font-size:16px;
+}
+
+.label{
+font-weight:bold;
+color:#555;
+min-width:80px;
+}
+
+.value{
+color:#111;
+font-weight:500;
 }
 </style>
 
@@ -181,7 +211,21 @@ font-weight:bold;
 <div class="user-info">
 
 <h2>Info. del usuario</h2>
+<div class="user-box">
 
+<div class="user-row">
+<span class="icon">📱</span>
+<span class="label">Número:</span>
+<span id="showPhone" class="value"></span>
+</div>
+
+<div class="user-row">
+<span class="icon">👤</span>
+<span class="label">Usuario:</span>
+<span id="showUser" class="value"></span>
+</div>
+
+</div>
 <p>
 Número:
 <span id="showPhone"></span>
@@ -226,7 +270,13 @@ Usuario:
 CERRAR SESIÓN
 </div>
 
-</div>
+</div><script>
+document.getElementById("showPhone").innerText =
+localStorage.getItem("phone");
+
+document.getElementById("showUser").innerText =
+localStorage.getItem("username");
+</script>
 </body>
 
 </html>
