@@ -1,140 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#f3f6fb;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.box{
-width:90%;
-max-width:400px;
-background:white;
-padding:20px;
-border-radius:16px;
-box-shadow:0 4px 14px rgba(0,0,0,0.1);
-}
-
-h2{
-text-align:center;
-color:#1565c0;
-}
-
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ddd;
-border-radius:10px;
-outline:none;
-}
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#1565c0;
-color:white;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
-}
-
-p{
-text-align:center;
-font-size:13px;
-color:#666;
-}
-
-a{
-color:#1565c0;
-text-decoration:none;
-}
-
-</style>
+<title>Registro</title>
 </head>
 
 <body>
 
-<div class="box">
+<h2>Registro</h2>
 
-<h2>Register Account</h2>
+<input id="name" placeholder="Nombre">
+<input id="phone" placeholder="Teléfono">
+<input id="pass" type="password" placeholder="Contraseña">
 
-<input type="text" id="name" placeholder="Username">
-<input type="text" id="phone" placeholder="Phone Number">
-<input type="password" id="password" placeholder="Password">
-
-<button onclick="register()">Create Account</button>
-
-<p>Already have account? <a href="index.html">Login</a></p>
-
-</div>
+<button onclick="register()">Crear</button>
 
 <script>
 
 function register(){
 
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
-let password = document.getElementById("password").value;
-
-if(!name || !phone || !password){
-alert("Please fill all fields");
-return;
-}
-
-/* GET USERS */
-
 let users = JSON.parse(localStorage.getItem("users") || "[]");
 
-/* CHECK EXIST */
-
-let exist = users.find(u => u.phone === phone);
-
-if(exist){
-alert("User already exists");
-return;
-}
-
-/* CREATE USER */
-
-let newUser = {
-name: name,
-phone: phone,
-password: password,
+let user = {
+name: document.getElementById("name").value,
+phone: document.getElementById("phone").value,
+password: document.getElementById("pass").value,
 balance: 10,
-vipLevel: 0,
-ordersCompleted: 0,
-status: "active"
+vip: 1
 };
 
-users.push(newUser);
+users.push(user);
 
 localStorage.setItem("users", JSON.stringify(users));
 
-/* SAVE CURRENT USER */
+alert("Cuenta creada");
 
-localStorage.setItem("currentUser", JSON.stringify(newUser));
-
-alert("Account created successfully");
-
-/* GO LOGIN */
-
-window.location.href = "index.html";
-
+window.location.href="index.html";
 }
 
 </script>
