@@ -1,387 +1,344 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Cuenta</title>
 
-<title>Mi Perfil</title>
+<style>
 
-<style>.avatar-box{
-text-align:center;
-margin-bottom:15px;
-}
-
-.avatar-box img{
-width:80px;
-height:80px;
-border-radius:50%;
-border:2px solid #1976d2;
-}
-
-.avatar-box input{
-display:block;
-margin:10px auto;
-}
-
-.user-box{
-background:#f7f9fc;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
-font-size:14px;
-}
-
-.wallet-box{
-background:linear-gradient(135deg,#00c853,#009624);
-color:white;
-padding:15px;
-border-radius:12px;
-margin:10px 0;
-font-weight:bold;
-text-align:center;
-}
-
-.actions{
-display:flex;
-justify-content:space-between;
-margin:10px 0;
-}
-
-.actions button{
-width:48%;
-padding:10px;
-border:none;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.actions button:first-child{
-background:#1e88e5;
-color:white;
-}
-
-.actions button:last-child{
-background:#ff5722;
-color:white;
-}
-
-.menu a{
-display:block;
-padding:12px;
-border-bottom:1px solid #eee;
-text-decoration:none;
-color:#333;
-}
-
-.logout{
-background:#111;
-color:white;
-text-align:center;
-padding:12px;
-border-radius:10px;
-margin-top:10px;
-}
-.profile-card{
-max-width:380px;
-margin:20px auto;
-background:white;
-border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-padding:20px;
+body{
+margin:0;
 font-family:Arial;
+background:#f2f4f8;
+padding-bottom:100px;
 }
 
-.user-header{
+/* HEADER */
+
+.header{
+background:white;
+padding:20px;
+border-bottom-left-radius:25px;
+border-bottom-right-radius:25px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* PROFILE */
+
+.profile-box{
 display:flex;
-gap:10px;
 align-items:center;
-border-bottom:1px solid #eee;
-padding-bottom:15px;
+gap:15px;
 }
 
 .avatar{
-font-size:40px;
+width:75px;
+height:75px;
+border-radius:50%;
+border:3px solid #2196f3;
+object-fit:cover;
 }
 
-.wallet-box{
-margin-top:15px;
-background:#f5f5f5;
-padding:15px;
+.user-info h2{
+margin:0;
+font-size:20px;
+color:#222;
+}
+
+.user-info p{
+margin-top:5px;
+color:#666;
+font-size:14px;
+}
+
+/* WALLET */
+
+.wallet{
+margin-top:20px;
+background:linear-gradient(135deg,#1565c0,#1e88e5);
+padding:20px;
+border-radius:18px;
+color:white;
+}
+
+.wallet-title{
+font-size:15px;
+opacity:0.9;
+}
+
+.balance{
+font-size:34px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.wallet-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.wallet-buttons button{
+flex:1;
+padding:12px;
+border:none;
 border-radius:12px;
 font-weight:bold;
-}
-
-.actions{
-display:flex;
-justify-content:space-between;
-margin:15px 0;
-}
-
-.actions button{
-width:48%;
-padding:10px;
-border:none;
-border-radius:10px;
+font-size:15px;
 cursor:pointer;
 }
 
-.actions button:first-child{
+.recargar{
 background:#00c853;
 color:white;
 }
 
-.actions button:last-child{
-background:#d50000;
+.retirar{
+background:#ff7043;
 color:white;
 }
 
-.menu a{
+/* MENU */
+
+.menu{
+padding:15px;
+}
+
+.menu-item{
+background:white;
+margin-bottom:12px;
+padding:16px;
+border-radius:15px;
 display:flex;
 justify-content:space-between;
-padding:12px;
-border-bottom:1px solid #eee;
-text-decoration:none;
+align-items:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+font-size:15px;
 color:#333;
+cursor:pointer;
+transition:0.2s;
 }
 
-.menu a span{
-margin-right:10px;
+.menu-item:hover{
+background:#f7fbff;
+transform:translateY(-2px);
 }
+
+/* LOGOUT */
 
 .logout{
-margin-top:15px;
-text-align:center;
-padding:12px;
+margin:20px 15px;
 background:#111;
 color:white;
-border-radius:10px;
-}
-body{
-background:#111;
-color:white;
-font-family:Arial;
+padding:16px;
 text-align:center;
-padding-top:100px;
-}
-
-.card{
-background:#1e1e1e;
-width:320px;
-margin:auto;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,215,0,0.2);
-}
-body{
-background:#f2f4f8;
-font-family:Arial;
-margin:0;
-}.profile-card{
-max-width:420px;
-margin:20px auto;
-background:#ffffff;
-border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
-padding:20px;
-}.user-header{
-display:flex;
-align-items:center;
-gap:12px;
-padding-bottom:15px;
-border-bottom:1px solid #eee;
-}
-
-.avatar{
-font-size:42px;
-color:#1976d2;
-}.wallet-box{
-background:linear-gradient(135deg,#00c853,#009624);
-color:white;
-padding:15px;
-border-radius:12px;
-margin-top:15px;
-font-weight:bold;
-text-align:center;
-}.actions button{
-padding:12px;
-border:none;
-border-radius:10px;
-width:48%;
+border-radius:15px;
 font-weight:bold;
 cursor:pointer;
 }
 
-.actions button:first-child{
-background:#1e88e5;
-color:white;
+/* BOTTOM NAVIGATION */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -2px 10px rgba(0,0,0,0.08);
 }
 
-.actions button:last-child{
-background:#e53935;
-color:white;
-}.menu a{
-display:flex;
-align-items:center;
-gap:10px;
-padding:14px;
-border-bottom:1px solid #eee;
+.bottom-nav a{
 text-decoration:none;
-color:#333;
-transition:0.25s;
-}
-
-.menu a:hover{
-background:#e3f2fd;
-padding-left:18px;
-}.logout{
-margin-top:15px;
+color:#666;
+font-size:13px;
 text-align:center;
-padding:12px;
-background:#263238;
-color:white;
-border-radius:10px;
-font-weight:bold;
-}.user-box{
-margin-top:10px;
-background:#f9fafc;
-padding:12px;
-border-radius:12px;
-border:1px solid #eee;
 }
 
-.user-row{
-display:flex;
-align-items:center;
-gap:8px;
-padding:6px 0;
-font-size:14px;
-color:#333;
+.bottom-nav span{
+display:block;
+font-size:22px;
+margin-bottom:3px;
 }
 
-.icon{
-font-size:16px;
+.active{
+color:#1e88e5 !important;
 }
 
-.label{
-font-weight:bold;
-color:#555;
-min-width:80px;
-}
-
-.value{
-color:#111;
-font-weight:500;
-}
 </style>
-
 </head>
 
-<body><div class="profile-card">
+<body>
 
-<!-- AVATAR -->
-<div class="avatar-box">
-<img id="avatarPreview" src="https://i.imgur.com/8Km9tLL.png">
-<input type="file" id="avatarInput" accept="image/*">
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="profile-box">
+
+<img
+class="avatar"
+id="avatarPreview"
+src="https://i.imgur.com/8Km9tLL.png"
+>
+
+<div class="user-info">
+
+<h2 id="showUser">
+Usuario
+</h2>
+
+<p id="showPhone">
+999999999
+</p>
+
 </div>
-
-<!-- USER INFO -->
-<h2>Info. del usuario</h2>
-
-<div class="user-box">
-
-<div>📱 <span id="showPhone"></span></div>
-<div>👤 <span id="showUser"></span></div>
 
 </div>
 
 <!-- WALLET -->
-<div class="wallet-box">
-💰 Saldo: S/ <span id="balance"></span>
+
+<div class="wallet">
+
+<div class="wallet-title">
+Saldo disponible
 </div>
 
-<!-- ACTIONS -->
-<div class="actions">
-<button onclick="addMoney(5)">Recargar</button>
-<button onclick="alert('Solicitud enviada')">Retirar</button>
+<div class="balance">
+S/
+<span id="balance">
+10.00
+</span>
+</div>
+
+<div class="wallet-buttons">
+
+<button class="recargar">
+Recargar
+</button>
+
+<button class="retirar">
+Retirar
+</button>
+
+</div>
+
+</div>
+
 </div>
 
 <!-- MENU -->
+
 <div class="menu">
 
-<a href="#">📄 Registros de recarga</a>
-<a href="#">📤 Registros de retiro</a>
-<a href="#">🧾 Registros de trabajo</a>
-<a href="#">🛠️ Servicios</a>
-<a href="#">🔔 Notificaciones</a>
-<a href="#">⚙️ Configuración</a>
-<a href="#">🌐 Idioma</a>
+<div class="menu-item">
+<span>📄 Registros de recarga</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>💸 Registros de retiro</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>🧾 Registros de trabajo</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>🛠 Servicios</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>🔔 Notificaciones</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>⚙️ Configuración</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span>🌐 Idioma</span>
+<span>›</span>
+</div>
 
 </div>
 
-<div class="logout">CERRAR SESIÓN</div>
+<!-- LOGOUT -->
 
+<div class="logout"
+onclick="logout()">
+CERRAR SESIÓN
+</div>
 
-</div><script>
-document.getElementById("showPhone").innerText =
-localStorage.getItem("phone");
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+<a href="vip.html">
+<span>🏠</span>
+Inicio
+</a>
+
+<a href="pedidos.html">
+<span>📦</span>
+Pedidos
+</a>
+
+<a href="trabajo.html">
+<span>💼</span>
+Trabajo
+</a>
+
+<a href="mi.html"
+class="active">
+<span>👤</span>
+Mi
+</a>
+
+</div>
+
+<script>
+
+/* USER DATA */
 
 document.getElementById("showUser").innerText =
-localStorage.getItem("username");
-</script><script>
-
-// USER DATA
-document.getElementById("showUser").innerText =
-localStorage.getItem("username");
+localStorage.getItem("username") || "Usuario";
 
 document.getElementById("showPhone").innerText =
-localStorage.getItem("phone");
+localStorage.getItem("phone") || "999999999";
 
-// WALLET
-function getBalance(){
-return parseFloat(localStorage.getItem("balance") || "10");
-}
+/* BALANCE */
 
-function setBalance(v){
-localStorage.setItem("balance", v);
-document.getElementById("balance").innerText = v.toFixed(2);
-}
+document.getElementById("balance").innerText =
+localStorage.getItem("balance") || "10.00";
 
-setBalance(getBalance());
+/* AVATAR */
 
-// ADD MONEY (VIP sync)
-function addMoney(amount){
-let b = getBalance();
-b += amount;
-setBalance(b);
-}
-
-// AVATAR UPLOAD SIMULATION
-document.getElementById("avatarInput").addEventListener("change", function(e){
-let file = e.target.files[0];
-let reader = new FileReader();
-
-reader.onload = function(){
-document.getElementById("avatarPreview").src = reader.result;
-localStorage.setItem("avatar", reader.result);
-};
-
-reader.readAsDataURL(file);
-});
-
-// LOAD AVATAR
 if(localStorage.getItem("avatar")){
+
 document.getElementById("avatarPreview").src =
 localStorage.getItem("avatar");
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+window.location.href = "index.html";
+
 }
 
 </script>
+
 </body>
-
 </html>
-<script>
-document.getElementById("showUser").innerText =
-localStorage.getItem("username");
-
-document.getElementById("showPhone").innerText =
-localStorage.getItem("phone");
-</script>
