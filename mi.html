@@ -58,7 +58,7 @@ position:absolute;
 right:0;
 top:55px;
 background:white;
-width:180px;
+width:190px;
 border-radius:12px;
 overflow:hidden;
 box-shadow:0 2px 10px rgba(0,0,0,0.15);
@@ -93,8 +93,8 @@ gap:15px;
 }
 
 .avatar{
-width:75px;
-height:75px;
+width:80px;
+height:80px;
 border-radius:50%;
 border:3px solid #2196f3;
 object-fit:cover;
@@ -102,7 +102,7 @@ object-fit:cover;
 
 .user-info h2{
 margin:0;
-font-size:20px;
+font-size:21px;
 color:#222;
 }
 
@@ -110,6 +110,17 @@ color:#222;
 margin-top:5px;
 color:#666;
 font-size:14px;
+}
+
+.upload-btn{
+margin-top:10px;
+background:#1565c0;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+font-size:13px;
 }
 
 /* WALLET */
@@ -165,6 +176,13 @@ color:white;
 padding:0 20px;
 }
 
+.menu-title{
+font-size:16px;
+font-weight:bold;
+color:#444;
+margin:20px 0 10px;
+}
+
 .menu-item{
 background:white;
 padding:16px;
@@ -175,10 +193,34 @@ justify-content:space-between;
 align-items:center;
 box-shadow:0 2px 8px rgba(0,0,0,0.05);
 cursor:pointer;
+transition:0.2s;
 }
 
 .menu-item:hover{
 background:#f8fbff;
+transform:translateY(-2px);
+}
+
+/* BANK CARD */
+
+.bank-card{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+display:none;
+}
+
+.bank-card h3{
+margin-top:0;
+color:#1565c0;
+}
+
+.bank-item{
+margin-top:10px;
+font-size:15px;
+color:#444;
 }
 
 /* MODAL */
@@ -210,18 +252,18 @@ color:#1565c0;
 }
 
 .modal-content label{
+display:block;
+margin-top:14px;
 font-size:14px;
 font-weight:bold;
 color:#444;
-display:block;
-margin-top:15px;
 }
 
 .modal-content input,
 .modal-content select{
 width:100%;
 padding:12px;
-margin-top:6px;
+margin-top:5px;
 border:1px solid #ddd;
 border-radius:10px;
 background:#f7f7f7;
@@ -229,8 +271,8 @@ background:#f7f7f7;
 
 .confirm-btn{
 width:100%;
-margin-top:20px;
 padding:14px;
+margin-top:20px;
 border:none;
 border-radius:12px;
 background:#1565c0;
@@ -238,28 +280,6 @@ color:white;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-}
-
-/* BANK CARD */
-
-.bank-card{
-background:white;
-margin:20px;
-padding:20px;
-border-radius:20px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-display:none;
-}
-
-.bank-card h3{
-margin-top:0;
-color:#1565c0;
-}
-
-.bank-item{
-margin-top:10px;
-color:#444;
-font-size:15px;
 }
 
 /* LOGOUT */
@@ -345,6 +365,10 @@ id="languageMenu">
 🇨🇳 中文
 </div>
 
+<div onclick="changeLanguage('jp')">
+🇯🇵 日本語
+</div>
+
 </div>
 
 </div>
@@ -359,6 +383,7 @@ id="languageMenu">
 
 <img
 class="avatar"
+id="avatarPreview"
 src="https://i.imgur.com/8Km9tLL.png"
 >
 
@@ -371,6 +396,11 @@ Usuario
 <p id="showPhone">
 999999999
 </p>
+
+<button class="upload-btn"
+onclick="uploadAvatar()">
+Cambiar foto
+</button>
 
 </div>
 
@@ -410,9 +440,44 @@ Retirar
 
 </div>
 
+<!-- BANK INFO -->
+
+<div class="bank-card"
+id="bankCard">
+
+<h3 id="bankInfoTitle">
+Información bancaria
+</h3>
+
+<div class="bank-item">
+<strong>Banco:</strong>
+<span id="savedBank"></span>
+</div>
+
+<div class="bank-item">
+<strong>Cuenta:</strong>
+<span id="savedAccount"></span>
+</div>
+
+<div class="bank-item">
+<strong>Nombre:</strong>
+<span id="savedName"></span>
+</div>
+
+<div class="bank-item">
+<strong>CCI:</strong>
+<span id="savedCCI"></span>
+</div>
+
+</div>
+
 <!-- MENU -->
 
 <div class="menu">
+
+<div class="menu-title">
+Información
+</div>
 
 <div class="menu-item"
 onclick="openBankModal()">
@@ -425,43 +490,53 @@ onclick="openBankModal()">
 
 </div>
 
+<div class="menu-item">
+<span id="m1">
+📄 Registros de recarga
+</span>
+<span>›</span>
 </div>
 
-<!-- BANK INFO -->
-
-<div class="bank-card"
-id="bankCard">
-
-<h3 id="bankInfoTitle">
-Información bancaria
-</h3>
-
-<div class="bank-item">
-<strong id="bankNameText">
-Banco:
-</strong>
-<span id="savedBank"></span>
+<div class="menu-item">
+<span id="m2">
+💸 Registros de retiro
+</span>
+<span>›</span>
 </div>
 
-<div class="bank-item">
-<strong id="accountText">
-Cuenta:
-</strong>
-<span id="savedAccount"></span>
+<div class="menu-item">
+<span id="m3">
+🧾 Registros de trabajo
+</span>
+<span>›</span>
 </div>
 
-<div class="bank-item">
-<strong id="nameText">
-Nombre:
-</strong>
-<span id="savedName"></span>
+<div class="menu-item">
+<span id="m4">
+🛠 Servicios
+</span>
+<span>›</span>
 </div>
 
-<div class="bank-item">
-<strong id="cciText">
-CCI:
-</strong>
-<span id="savedCCI"></span>
+<div class="menu-item">
+<span id="m5">
+🔔 Notificaciones
+</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span id="m6">
+⚙️ Configuración
+</span>
+<span>›</span>
+</div>
+
+<div class="menu-item">
+<span id="m7">
+🌐 Idioma
+</span>
+<span>›</span>
 </div>
 
 </div>
@@ -526,8 +601,8 @@ Confirmar
 <!-- LOGOUT -->
 
 <div class="logout"
-onclick="logout()"
-id="logoutBtn">
+id="logoutBtn"
+onclick="logout()">
 
 CERRAR SESIÓN
 
@@ -570,8 +645,19 @@ localStorage.getItem("username") || "Usuario";
 document.getElementById("showPhone").innerText =
 localStorage.getItem("phone") || "999999999";
 
+/* BALANCE */
+
 document.getElementById("balance").innerText =
 localStorage.getItem("balance") || "10.00";
+
+/* AVATAR */
+
+if(localStorage.getItem("avatar")){
+
+document.getElementById("avatarPreview").src =
+localStorage.getItem("avatar");
+
+}
 
 /* LANGUAGE MENU */
 
@@ -587,7 +673,51 @@ menu.style.display === "block"
 
 }
 
-/* OPEN BANK MODAL */
+/* CHANGE LANGUAGE */
+
+function changeLanguage(lang){
+
+if(lang === "en"){
+
+document.getElementById("walletTitle")
+.innerText = "Available Balance";
+
+document.getElementById("recargarBtn")
+.innerText = "Recharge";
+
+document.getElementById("retirarBtn")
+.innerText = "Withdraw";
+
+document.getElementById("bankLinkText")
+.innerText = "🏦 Bank Link Information";
+
+document.getElementById("logoutBtn")
+.innerText = "LOG OUT";
+
+}
+
+if(lang === "my"){
+
+document.getElementById("walletTitle")
+.innerText = "လက်ကျန်ငွေ";
+
+document.getElementById("recargarBtn")
+.innerText = "ငွေဖြည့်";
+
+document.getElementById("retirarBtn")
+.innerText = "ငွေထုတ်";
+
+document.getElementById("bankLinkText")
+.innerText = "🏦 ဘဏ်ချိတ်ဆက်မှု";
+
+document.getElementById("logoutBtn")
+.innerText = "အကောင့်ထွက်ရန်";
+
+}
+
+}
+
+/* OPEN MODAL */
 
 function openBankModal(){
 
@@ -641,7 +771,7 @@ document.getElementById("bankModal")
 
 }
 
-/* LOAD SAVED BANK */
+/* LOAD BANK */
 
 if(localStorage.getItem("bank")){
 
@@ -662,87 +792,19 @@ localStorage.getItem("cci");
 
 }
 
-/* LANGUAGE */
+/* AVATAR UPLOAD */
 
-function changeLanguage(lang){
+function uploadAvatar(){
 
-if(lang === "en"){
+let url =
+prompt("Ingrese URL de imagen");
 
-document.getElementById("walletTitle")
-.innerText = "Available Balance";
+if(url){
 
-document.getElementById("recargarBtn")
-.innerText = "Recharge";
+document.getElementById("avatarPreview").src =
+url;
 
-document.getElementById("retirarBtn")
-.innerText = "Withdraw";
-
-document.getElementById("bankLinkText")
-.innerText = "🏦 Bank Link Information";
-
-document.getElementById("bankInfoTitle")
-.innerText = "Bank Information";
-
-document.getElementById("modalTitle")
-.innerText = "Link Bank Account";
-
-document.getElementById("labelBank")
-.innerText = "Choose Bank";
-
-document.getElementById("labelAccount")
-.innerText = "Bank Account";
-
-document.getElementById("labelName")
-.innerText = "Name";
-
-document.getElementById("labelCCI")
-.innerText = "CCI";
-
-document.getElementById("confirmBtn")
-.innerText = "Confirm";
-
-document.getElementById("logoutBtn")
-.innerText = "LOG OUT";
-
-}
-
-if(lang === "my"){
-
-document.getElementById("walletTitle")
-.innerText = "လက်ကျန်ငွေ";
-
-document.getElementById("recargarBtn")
-.innerText = "ငွေဖြည့်";
-
-document.getElementById("retirarBtn")
-.innerText = "ငွေထုတ်";
-
-document.getElementById("bankLinkText")
-.innerText = "🏦 ဘဏ်ချိတ်ဆက်မှု";
-
-document.getElementById("bankInfoTitle")
-.innerText = "ဘဏ်အချက်အလက်";
-
-document.getElementById("modalTitle")
-.innerText = "ဘဏ်အကောင့်ချိတ်ဆက်ရန်";
-
-document.getElementById("labelBank")
-.innerText = "ဘဏ်ရွေးချယ်ပါ";
-
-document.getElementById("labelAccount")
-.innerText = "ဘဏ်အကောင့်";
-
-document.getElementById("labelName")
-.innerText = "နာမည်";
-
-document.getElementById("labelCCI")
-.innerText = "CCI";
-
-document.getElementById("confirmBtn")
-.innerText = "အတည်ပြုရန်";
-
-document.getElementById("logoutBtn")
-.innerText = "အကောင့်ထွက်ရန်";
+localStorage.setItem("avatar", url);
 
 }
 
@@ -752,8 +814,7 @@ document.getElementById("logoutBtn")
 
 function logout(){
 
-window.location.href =
-"index.html";
+window.location.href = "index.html";
 
 }
 
