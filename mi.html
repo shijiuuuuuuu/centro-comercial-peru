@@ -5,7 +5,82 @@
 
 <title>Mi Perfil</title>
 
-<style>
+<style>.avatar-box{
+text-align:center;
+margin-bottom:15px;
+}
+
+.avatar-box img{
+width:80px;
+height:80px;
+border-radius:50%;
+border:2px solid #1976d2;
+}
+
+.avatar-box input{
+display:block;
+margin:10px auto;
+}
+
+.user-box{
+background:#f7f9fc;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+font-size:14px;
+}
+
+.wallet-box{
+background:linear-gradient(135deg,#00c853,#009624);
+color:white;
+padding:15px;
+border-radius:12px;
+margin:10px 0;
+font-weight:bold;
+text-align:center;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+margin:10px 0;
+}
+
+.actions button{
+width:48%;
+padding:10px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.actions button:first-child{
+background:#1e88e5;
+color:white;
+}
+
+.actions button:last-child{
+background:#ff5722;
+color:white;
+}
+
+.menu a{
+display:block;
+padding:12px;
+border-bottom:1px solid #eee;
+text-decoration:none;
+color:#333;
+}
+
+.logout{
+background:#111;
+color:white;
+text-align:center;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
+}
 .profile-card{
 max-width:380px;
 margin:20px auto;
@@ -201,7 +276,51 @@ font-weight:500;
 
 </head>
 
-<body>
+<body><div class="profile-card">
+
+<!-- AVATAR -->
+<div class="avatar-box">
+<img id="avatarPreview" src="https://i.imgur.com/8Km9tLL.png">
+<input type="file" id="avatarInput" accept="image/*">
+</div>
+
+<!-- USER INFO -->
+<h2>Info. del usuario</h2>
+
+<div class="user-box">
+
+<div>📱 <span id="showPhone"></span></div>
+<div>👤 <span id="showUser"></span></div>
+
+</div>
+
+<!-- WALLET -->
+<div class="wallet-box">
+💰 Saldo: S/ <span id="balance"></span>
+</div>
+
+<!-- ACTIONS -->
+<div class="actions">
+<button onclick="addMoney(5)">Recargar</button>
+<button onclick="alert('Solicitud enviada')">Retirar</button>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+
+<a href="#">📄 Registros de recarga</a>
+<a href="#">📤 Registros de retiro</a>
+<a href="#">🧾 Registros de trabajo</a>
+<a href="#">🛠️ Servicios</a>
+<a href="#">🔔 Notificaciones</a>
+<a href="#">⚙️ Configuración</a>
+<a href="#">🌐 Idioma</a>
+
+</div>
+
+<div class="logout">CERRAR SESIÓN</div>
+
+</div>
 <div class="profile-card">
 
 <div class="user-header">
@@ -276,6 +395,53 @@ localStorage.getItem("phone");
 
 document.getElementById("showUser").innerText =
 localStorage.getItem("username");
+</script><script>
+
+// USER DATA
+document.getElementById("showUser").innerText =
+localStorage.getItem("username");
+
+document.getElementById("showPhone").innerText =
+localStorage.getItem("phone");
+
+// WALLET
+function getBalance(){
+return parseFloat(localStorage.getItem("balance") || "10");
+}
+
+function setBalance(v){
+localStorage.setItem("balance", v);
+document.getElementById("balance").innerText = v.toFixed(2);
+}
+
+setBalance(getBalance());
+
+// ADD MONEY (VIP sync)
+function addMoney(amount){
+let b = getBalance();
+b += amount;
+setBalance(b);
+}
+
+// AVATAR UPLOAD SIMULATION
+document.getElementById("avatarInput").addEventListener("change", function(e){
+let file = e.target.files[0];
+let reader = new FileReader();
+
+reader.onload = function(){
+document.getElementById("avatarPreview").src = reader.result;
+localStorage.setItem("avatar", reader.result);
+};
+
+reader.readAsDataURL(file);
+});
+
+// LOAD AVATAR
+if(localStorage.getItem("avatar")){
+document.getElementById("avatarPreview").src =
+localStorage.getItem("avatar");
+}
+
 </script>
 </body>
 
