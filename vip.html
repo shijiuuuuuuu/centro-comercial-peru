@@ -7,7 +7,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>VIP Levels</title>
+<title>VIP CENTER</title>
 
 <style>
 
@@ -102,23 +102,8 @@ gap:18px;
 .vip-card{
 background:white;
 border-radius:24px;
-overflow:hidden;
+padding:20px;
 box-shadow:0 4px 16px rgba(0,0,0,0.08);
-transition:0.2s;
-}
-
-.vip-card:hover{
-transform:translateY(-3px);
-}
-
-.vip-card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.vip-content{
-padding:18px;
 }
 
 .vip-level{
@@ -131,15 +116,16 @@ font-size:13px;
 margin-bottom:12px;
 }
 
-.vip-content h2{
+.vip-card h2{
 margin:0;
 font-size:22px;
 }
 
-.vip-content p{
-margin-top:8px;
+.vip-card p{
+margin-top:10px;
 color:#666;
 font-size:14px;
+line-height:1.7;
 }
 
 .vip-info{
@@ -162,7 +148,7 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* BOTTOM NAV */
+/* NAVIGATION */
 
 .bottom-nav{
 position:fixed;
@@ -230,18 +216,18 @@ S/
 
 </div>
 
-<!-- TASK COUNTER -->
+<!-- TASK -->
 
 <div class="task-box">
 
 <div class="task-card">
 
 <h3>
-VIP1 Orders
+VIP Actual
 </h3>
 
-<h2 id="vip1count">
-0 / 12
+<h2 id="currentVip">
+VIP0
 </h2>
 
 </div>
@@ -249,7 +235,7 @@ VIP1 Orders
 <div class="task-card">
 
 <h3>
-Ingresos totales
+Ganancias
 </h3>
 
 <h2>
@@ -271,188 +257,299 @@ S/
 
 <div class="vip-card">
 
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-
-<div class="vip-content">
-
 <div class="vip-level">
 VIP1
 </div>
 
 <h2>
-Amazon Tasks
+12 / 12 Órdenes
 </h2>
 
 <p>
-12 pedidos diarios con ganancias automáticas.
+Saldo requerido:
+<strong>S/ 30</strong>
+</p>
+
+<p>
+Debe completar las 12 órdenes para retirar.
 </p>
 
 <div class="vip-info">
 
 <span>
-Comisión:
-<strong>
-S/ 8 - 12
-</strong>
+Ganancia
 </span>
 
 <span>
-Órdenes:
-<strong>
-12
-</strong>
+S/ 8 - 12
 </span>
 
 </div>
 
 <button class="vip-btn"
-onclick="window.location.href='vip1.html'">
+onclick="startVIP(
+1,
+30,
+12,
+'vip1.html'
+)">
 
-Entrar VIP1
+INICIAR VIP1
 
 </button>
 
 </div>
 
-</div>
+
+
+
 
 <!-- VIP2 -->
 
 <div class="vip-card">
-
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
-
-<div class="vip-content">
 
 <div class="vip-level">
 VIP2
 </div>
 
 <h2>
-SHEIN Tasks
+26 / 26 Órdenes
 </h2>
 
 <p>
-20 pedidos diarios con comisión premium.
+Saldo requerido:
+<strong>S/ 50</strong>
+</p>
+
+<p>
+Debe completar las 26 órdenes para retirar.
 </p>
 
 <div class="vip-info">
 
 <span>
-Comisión:
-<strong>
-S/ 15
-</strong>
+Ganancia
 </span>
 
 <span>
-Órdenes:
-<strong>
-20
-</strong>
+S/ 15 - 20
 </span>
 
 </div>
 
-<button class="vip-btn">
+<button class="vip-btn"
+onclick="startVIP(
+2,
+50,
+26,
+'vip2.html'
+)">
 
-Bloqueado
+INICIAR VIP2
 
 </button>
 
 </div>
 
-</div>
+
+
+
 
 <!-- VIP3 -->
 
 <div class="vip-card">
-
-<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-
-<div class="vip-content">
 
 <div class="vip-level">
 VIP3
 </div>
 
 <h2>
-Luxury Orders
+36 / 36 Órdenes
 </h2>
 
 <p>
-Órdenes avanzadas con mayores beneficios.
+Saldo requerido:
+<strong>S/ 100</strong>
+</p>
+
+<p>
+Debe completar las 36 órdenes para retirar.
 </p>
 
 <div class="vip-info">
 
 <span>
-Comisión:
-<strong>
-S/ 25
-</strong>
+Ganancia
 </span>
 
 <span>
-Órdenes:
-<strong>
-30
-</strong>
+S/ 25 - 35
 </span>
 
 </div>
 
-<button class="vip-btn">
+<button class="vip-btn"
+onclick="startVIP(
+3,
+100,
+36,
+'vip3.html'
+)">
 
-Bloqueado
+INICIAR VIP3
 
 </button>
 
 </div>
 
-</div>
+
+
+
 
 <!-- VIP4 -->
 
 <div class="vip-card">
-
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
-
-<div class="vip-content">
 
 <div class="vip-level">
 VIP4
 </div>
 
 <h2>
-Premium Store
+48 / 48 Órdenes
 </h2>
 
 <p>
-Sistema exclusivo de tareas internacionales.
+Saldo requerido:
+<strong>S/ 300</strong>
+</p>
+
+<p>
+Debe completar las 48 órdenes para retirar.
 </p>
 
 <div class="vip-info">
 
 <span>
-Comisión:
-<strong>
-S/ 40
-</strong>
+Ganancia
 </span>
 
 <span>
-Órdenes:
-<strong>
-40
-</strong>
+S/ 50 - 70
 </span>
 
 </div>
 
-<button class="vip-btn">
+<button class="vip-btn"
+onclick="startVIP(
+4,
+300,
+48,
+'vip4.html'
+)">
 
-Bloqueado
+INICIAR VIP4
+
+</button>
+
+</div>
+
+
+
+
+
+<!-- VIP5 -->
+
+<div class="vip-card">
+
+<div class="vip-level">
+VIP5
+</div>
+
+<h2>
+60 / 60 Órdenes
+</h2>
+
+<p>
+Saldo requerido:
+<strong>S/ 500</strong>
+</p>
+
+<p>
+Debe completar las 60 órdenes para retirar.
+</p>
+
+<div class="vip-info">
+
+<span>
+Ganancia
+</span>
+
+<span>
+S/ 80 - 100
+</span>
+
+</div>
+
+<button class="vip-btn"
+onclick="startVIP(
+5,
+500,
+60,
+'vip5.html'
+)">
+
+INICIAR VIP5
+
+</button>
+
+</div>
+
+
+
+
+
+<!-- VIP6 -->
+
+<div class="vip-card">
+
+<div class="vip-level">
+VIP6
+</div>
+
+<h2>
+70 / 70 Órdenes
+</h2>
+
+<p>
+Saldo requerido:
+<strong>S/ 1000</strong>
+</p>
+
+<p>
+Debe completar las 70 órdenes para retirar.
+</p>
+
+<div class="vip-info">
+
+<span>
+Ganancia
+</span>
+
+<span>
+S/ 120 - 150
+</span>
+
+</div>
+
+<button class="vip-btn"
+onclick="startVIP(
+6,
+1000,
+70,
+'vip6.html'
+)">
+
+INICIAR VIP6
 
 </button>
 
@@ -460,9 +557,7 @@ Bloqueado
 
 </div>
 
-</div>
-
-<!-- BOTTOM NAV -->
+<!-- NAVIGATION -->
 
 <div class="bottom-nav">
 
@@ -511,18 +606,6 @@ document.getElementById("balance")
 .innerText =
 balance.toFixed(2);
 
-/* VIP1 ORDERS */
-
-let vip1orders =
-parseInt(
-localStorage.getItem("vip1orders")
-|| 0
-);
-
-document.getElementById("vip1count")
-.innerText =
-vip1orders + " / 12";
-
 /* EARNINGS */
 
 let earnings =
@@ -535,6 +618,110 @@ earnings = 0;
 document.getElementById("earnings")
 .innerText =
 earnings.toFixed(2);
+
+/* CURRENT VIP */
+
+let currentVIP =
+localStorage.getItem("currentVIP")
+|| "0";
+
+document.getElementById("currentVip")
+.innerText =
+"VIP" + currentVIP;
+
+/* VIP START */
+
+function startVIP(
+vip,
+required,
+orders,
+page
+){
+
+let balance =
+parseFloat(
+localStorage.getItem("balance")
+|| 0
+);
+
+/* CHECK BALANCE */
+
+if(balance < required){
+
+alert(
+
+"Saldo insuficiente\n\n" +
+
+"VIP" + vip +
+
+" requiere mínimo S/ " +
+
+required
+
+);
+
+return;
+
+}
+
+/* CHECK WITHDRAW */
+
+let withdrawDone =
+localStorage.getItem("withdrawDone");
+
+if(
+withdrawDone === "false"
+&&
+localStorage.getItem("currentVIP")
+){
+
+alert(
+
+"Debe completar y retirar el nivel anterior"
+
+);
+
+return;
+
+}
+
+/* SAVE VIP */
+
+localStorage.setItem(
+"currentVIP",
+vip
+);
+
+localStorage.setItem(
+"vipRequired",
+required
+);
+
+localStorage.setItem(
+"vipOrdersLimit",
+orders
+);
+
+localStorage.setItem(
+"vipOrdersCompleted",
+0
+);
+
+localStorage.setItem(
+"withdrawUnlocked",
+"false"
+);
+
+localStorage.setItem(
+"withdrawDone",
+"false"
+);
+
+/* REDIRECT */
+
+window.location.href = page;
+
+}
 
 </script>
 
