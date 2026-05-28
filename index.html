@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
 <meta charset="UTF-8">
-<title>Centro Comercial Per煤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
 
 <style>
 
 body{
-background:#000;
+margin:0;
 font-family:Arial;
+background:linear-gradient(135deg,#1565c0,#42a5f5);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-margin:0;
 }
 
-.card{
-background:#1e1e1e;
-padding:40px;
-border-radius:20px;
-width:320px;
+/* BOX */
+
+.box{
+width:90%;
+max-width:380px;
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+
+h2{
 text-align:center;
-box-shadow:0 0 30px rgba(255,215,0,0.3);
+color:#1565c0;
+margin-bottom:20px;
 }
 
-h1{
-color:gold;
-}
-
-p{
-color:white;
-}
+/* INPUT */
 
 input{
 width:100%;
-padding:15px;
-margin-top:15px;
-border:none;
+padding:12px;
+margin:8px 0;
+border:1px solid #ddd;
 border-radius:10px;
-background:#eee;
+outline:none;
 }
+
+/* BUTTON */
 
 button{
 width:100%;
-padding:15px;
-margin-top:20px;
-background:gold;
+padding:12px;
+margin-top:10px;
 border:none;
 border-radius:10px;
+background:#1565c0;
+color:white;
 font-weight:bold;
 cursor:pointer;
 }
 
+/* TEXT */
+
+p{
+text-align:center;
+font-size:13px;
+margin-top:10px;
+}
+
 a{
-display:block;
-margin-top:15px;
-color:white;
+color:#1565c0;
 text-decoration:none;
 }
 
@@ -65,27 +80,18 @@ text-decoration:none;
 
 <body>
 
-<div class="card">
+<div class="box">
 
-<h1>Centro Comercial Per煤</h1>
+<h2>Login</h2>
 
-<p>Iniciar Sesi贸n</p>
+<input type="text" id="phone" placeholder="Phone or Username">
+<input type="password" id="password" placeholder="Password">
 
-<input type="text"
-id="user"
-placeholder="Usuario o tel茅fono">
+<button onclick="login()">Login</button>
 
-<input type="password"
-id="pass"
-placeholder="Contrase帽a">
-
-<button onclick="login()">
-Ingresar
-</button>
-
-<a href="register.html">
-Crear cuenta
-</a>
+<p>
+Don't have account? <a href="register.html">Register</a>
+</p>
 
 </div>
 
@@ -93,34 +99,41 @@ Crear cuenta
 
 function login(){
 
-let user =
-document.getElementById("user").value;
+let phone = document.getElementById("phone").value;
+let password = document.getElementById("password").value;
 
-let pass =
-document.getElementById("pass").value;
+/* GET USERS */
 
-let savedUser =
-localStorage.getItem("username");
+let users = JSON.parse(localStorage.getItem("users") || "[]");
 
-let savedPhone =
-localStorage.getItem("phone");
+/* FIND USER */
 
-let savedPass =
-localStorage.getItem("password");
+let user = users.find(u =>
+u.phone === phone && u.password === password
+);
 
-if(
-(user === savedUser || user === savedPhone)
-&&
-pass === savedPass
-){
+if(!user){
+alert("Invalid login");
+return;
+}
+
+/* SAVE CURRENT USER */
+
+localStorage.setItem("currentUser", JSON.stringify(user));
+
+localStorage.setItem("balance", user.balance);
+
+/* VIP DEFAULT */
+
+if(!localStorage.getItem("currentVIP")){
+localStorage.setItem("currentVIP", 0);
+}
+
+/* GO VIP PAGE */
+
+alert("Login successful");
 
 window.location.href = "vip.html";
-
-}else{
-
-alert("Datos incorrectos");
-
-}
 
 }
 
