@@ -1,488 +1,140 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>VIP1 Orders</title>
+<title>VIP 1 Tasks</title>
 
 <style>
 
 body{
-margin:0;
+background:#111;
+color:white;
 font-family:Arial;
-background:#f4f7fb;
-padding-bottom:100px;
-}
-
-/* HEADER */
-
-.header{
-background:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-font-size:24px;
-font-weight:bold;
-color:#1565c0;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-margin:20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.box{
-background:white;
+text-align:center;
 padding:20px;
-border-radius:20px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-.box h3{
-margin:0;
-font-size:14px;
-color:#777;
-}
-
-.box h2{
-margin-top:10px;
-color:#1565c0;
-}
-
-/* PRODUCT CARD */
-
-.products{
-padding:20px;
-display:flex;
-flex-direction:column;
-gap:20px;
+h1{
+color:gold;
 }
 
 .card{
-background:white;
-border-radius:24px;
-overflow:hidden;
-box-shadow:0 4px 15px rgba(0,0,0,0.08);
-}
-
-.card img{
-width:100%;
-height:240px;
-object-fit:cover;
-}
-
-.card-content{
-padding:18px;
-}
-
-.platform{
-display:inline-block;
-padding:6px 12px;
-background:#1565c0;
-color:white;
+background:#1e1e1e;
+padding:20px;
+margin:15px auto;
+width:320px;
 border-radius:20px;
-font-size:12px;
-margin-bottom:10px;
+box-shadow:0 0 15px rgba(255,215,0,0.3);
 }
 
-.card h2{
-margin:0;
-font-size:20px;
-}
-
-.price{
-margin-top:12px;
-font-size:18px;
-font-weight:bold;
-color:#111;
-}
-
-.commission{
-margin-top:8px;
-font-size:16px;
-color:#2e7d32;
-font-weight:bold;
-}
-
-.balance{
-margin-top:8px;
-font-size:15px;
-color:#666;
-}
-
-.order-btn{
-width:100%;
-padding:16px;
-margin-top:18px;
+button{
+padding:12px 20px;
 border:none;
-border-radius:16px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
-color:white;
-font-size:17px;
+border-radius:10px;
+background:gold;
 font-weight:bold;
 cursor:pointer;
+margin-top:10px;
 }
 
-/* BOTTOM NAV */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:12px 0;
-box-shadow:0 -2px 10px rgba(0,0,0,0.08);
+.completed{
+background:green;
+color:white;
 }
 
-.bottom-nav a{
-text-decoration:none;
-color:#666;
-font-size:13px;
-text-align:center;
-}
-
-.bottom-nav span{
-display:block;
-font-size:22px;
-margin-bottom:3px;
-}
-
-.active{
-color:#1565c0 !important;
+#result{
+display:none;
+background:#222;
+padding:20px;
+margin-top:30px;
+border-radius:20px;
+width:320px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 0 15px rgba(0,255,0,0.3);
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
+<h1>VIP 1</h1>
+<h1>VIP Levels</h1>
 
-<div class="header">
+<p class="task-box">
+Progreso: <span id="taskCount">0</span> / 12
+</p>
+<p>Pedidos Completados:
+<span id="count">0</span>/12
+</p>
 
-<div class="logo">
-VIP1 TASKS
-</div>
+<div id="tasks"></div>
 
-<div>
-🔥
-</div>
+<div id="result">
 
-</div>
+<h2>12/12 COMPLETADO</h2>
 
-<!-- DASHBOARD -->
+<h3>Ganancia Total</h3>
 
-<div class="dashboard">
-
-<div class="box">
-
-<h3>
-Pedidos completados
-</h3>
-
-<h2 id="orders">
-0 / 12
-</h2>
-
-</div>
-
-<div class="box">
-
-<h3>
-Saldo disponible
-</h3>
-
-<h2>
-S/
-<span id="balance">
-10.00
-</span>
-</h2>
-
-</div>
-
-</div>
-
-<!-- PRODUCTS -->
-
-<div class="products">
-
-<!-- PRODUCT 1 -->
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-
-<div class="card-content">
-
-<div class="platform">
-AMAZON
-</div>
-
-<h2>
-Luxury Smart Watch
-</h2>
-
-<div class="price">
-Monto del pedido: S/ 120
-</div>
-
-<div class="commission">
-Comisión: + S/ 8
-</div>
-
-<div class="balance">
-Saldo actual:
-S/
-<span class="liveBalance">
-10.00
-</span>
-</div>
-
-<button class="order-btn"
-onclick="completeOrder(8)">
-
-Completar pedido
-
-</button>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 2 -->
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
-
-<div class="card-content">
-
-<div class="platform">
-SHEIN
-</div>
-
-<h2>
-Fashion Sneakers
-</h2>
-
-<div class="price">
-Monto del pedido: S/ 180
-</div>
-
-<div class="commission">
-Comisión: + S/ 10
-</div>
-
-<div class="balance">
-Saldo actual:
-S/
-<span class="liveBalance">
-10.00
-</span>
-</div>
-
-<button class="order-btn"
-onclick="completeOrder(10)">
-
-Completar pedido
-
-</button>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 3 -->
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-
-<div class="card-content">
-
-<div class="platform">
-AMAZON
-</div>
-
-<h2>
-Women Fashion Bag
-</h2>
-
-<div class="price">
-Monto del pedido: S/ 220
-</div>
-
-<div class="commission">
-Comisión: + S/ 12
-</div>
-
-<div class="balance">
-Saldo actual:
-S/
-<span class="liveBalance">
-10.00
-</span>
-</div>
-
-<button class="order-btn"
-onclick="completeOrder(12)">
-
-Completar pedido
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- BOTTOM NAV -->
-
-<div class="bottom-nav">
-
-<a href="vip.html"
-class="active">
-
-<span>🏠</span>
-Inicio
-
-</a>
-
-<a href="pedidos.html">
-
-<span>📦</span>
-Pedidos
-
-</a>
-
-<a href="trabajo.html">
-
-<span>💼</span>
-Trabajo
-
-</a>
-
-<a href="mi.html">
-
-<span>👤</span>
-Mi
-
-</a>
+<h1>S/ 35.23</h1>
 
 </div>
 
 <script>
 
-/* BALANCE */
+let completed = 0;
 
-let balance =
-parseFloat(
-localStorage.getItem("balance")
-|| 10
-);
+const tasksDiv = document.getElementById("tasks");
 
-document.getElementById("balance")
-.innerText =
-balance.toFixed(2);
+for(let i=1; i<=12; i++){
 
-/* LIVE BALANCE */
+let orderAmount = (Math.random()*20+5).toFixed(2);
 
-function updateBalances(){
+let commission = (Math.random()*3+1).toFixed(2);
 
-document.querySelectorAll(".liveBalance")
-.forEach(el=>{
+let card = document.createElement("div");
 
-el.innerText =
-balance.toFixed(2);
+card.className = "card";
 
-});
+card.innerHTML = `
+
+<h3>Pedido ${i}</h3>
+
+<p>Monto del Pedido:
+S/ ${orderAmount}</p>
+
+<p>Comisi贸n:
+S/ ${commission}</p>
+
+<button onclick="completeTask(this)">
+Completar Pedido
+</button>
+
+`;
+
+tasksDiv.appendChild(card);
 
 }
 
-updateBalances();
+function completeTask(btn){
 
-/* ORDERS */
-
-let orders =
-parseInt(
-localStorage.getItem("vip1orders")
-|| 0
-);
-
-document.getElementById("orders")
-.innerText =
-orders + " / 12";
-
-/* COMPLETE ORDER */
-
-function completeOrder(commission){
-
-if(orders >= 12){
-
-alert("Límite completado");
-
+if(btn.classList.contains("completed")){
 return;
-
 }
 
-/* ADD BALANCE */
+btn.classList.add("completed");
 
-balance += commission;
+btn.innerText = "Completado";
 
-/* SAVE */
+completed++;
 
-orders++;
+document.getElementById("count").innerText = completed;
 
-localStorage.setItem(
-"balance",
-balance.toFixed(2)
-);
+if(completed == 12){
 
-localStorage.setItem(
-"vip1orders",
-orders
-);
+document.getElementById("result").style.display = "block";
 
-/* UPDATE */
-
-document.getElementById("balance")
-.innerText =
-balance.toFixed(2);
-
-document.getElementById("orders")
-.innerText =
-orders + " / 12";
-
-updateBalances();
-
-/* SUCCESS */
-
-alert(
-"Pedido completado + S/ "
-+ commission
-);
+}
 
 }
 
