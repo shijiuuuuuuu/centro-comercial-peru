@@ -1,159 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
 <title>Trabajo</title>
 
 <style>
 
 body{
-margin:0;
+background:#111;
+color:white;
 font-family:Arial;
-background:#f4f7fb;
-padding-bottom:100px;
-}
-
-/* HEADER */
-
-.header{
-background:white;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-font-size:24px;
-font-weight:bold;
-color:#1565c0;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-padding:20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
+text-align:center;
+padding-top:100px;
 }
 
 .card{
-background:white;
-padding:22px;
-border-radius:24px;
-box-shadow:0 4px 14px rgba(0,0,0,0.06);
-}
-
-.card h3{
-margin:0;
-font-size:14px;
-color:#666;
-}
-
-.card h1{
-margin-top:12px;
-font-size:30px;
-color:#1565c0;
-}
-
-/* WORK STATUS */
-
-.status{
-margin:20px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
-padding:28px;
-border-radius:26px;
-color:white;
-box-shadow:0 6px 18px rgba(0,0,0,0.12);
-}
-
-.status h2{
-margin:0;
-font-size:28px;
-}
-
-.status p{
-margin-top:12px;
-font-size:16px;
-opacity:0.95;
-}
-
-/* TASK BAR */
-
-.progress-container{
-margin-top:20px;
-background:rgba(255,255,255,0.25);
+background:#1e1e1e;
+width:320px;
+margin:auto;
+padding:25px;
 border-radius:20px;
-overflow:hidden;
-height:18px;
-}
-
-.progress{
-height:18px;
-width:0%;
-background:white;
-}
-
-/* INFO BOX */
-
-.info-box{
-margin:20px;
-background:white;
-padding:24px;
-border-radius:24px;
-box-shadow:0 4px 14px rgba(0,0,0,0.06);
-}
-
-.info-box h2{
-margin:0;
-color:#1565c0;
-}
-
-.info-box p{
-margin-top:14px;
-line-height:1.8;
-color:#555;
-}
-
-/* NAVIGATION */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:12px 0;
-box-shadow:0 -2px 10px rgba(0,0,0,0.08);
-}
-
-.bottom-nav a{
-text-decoration:none;
-color:#666;
-font-size:13px;
-text-align:center;
-}
-
-.bottom-nav span{
-display:block;
-font-size:22px;
-margin-bottom:3px;
-}
-
-.active{
-color:#1565c0 !important;
+box-shadow:0 0 20px rgba(255,215,0,0.2);
 }
 
 </style>
@@ -162,205 +30,16 @@ color:#1565c0 !important;
 
 <body>
 
-<!-- HEADER -->
-
-<div class="header">
-
-<div class="logo">
-Trabajo
-</div>
-
-<div>
-💼
-</div>
-
-</div>
-
-<!-- STATUS -->
-
-<div class="status">
-
-<h2>
-Estado laboral activo
-</h2>
-
-<p>
-Sistema de tareas VIP funcionando correctamente.
-</p>
-
-<div class="progress-container">
-
-<div class="progress"
-id="progressBar">
-
-</div>
-
-</div>
-
-</div>
-
-<!-- DASHBOARD -->
-
-<div class="dashboard">
-
 <div class="card">
 
-<h3>
-Nivel actual
-</h3>
+<h1>馃懛 Trabajo</h1>
 
-<h1>
-VIP1
-</h1>
+<p>Centro de Trabajo</p>
+
+<p>Complete tareas para ganar comisiones.</p>
 
 </div>
-
-<div class="card">
-
-<h3>
-Pedidos completados
-</h3>
-
-<h1 id="orders">
-0/12
-</h1>
-
-</div>
-
-<div class="card">
-
-<h3>
-Saldo actual
-</h3>
-
-<h1>
-S/
-<span id="balance">
-10.00
-</span>
-</h1>
-
-</div>
-
-<div class="card">
-
-<h3>
-Ganancias
-</h3>
-
-<h1>
-S/
-<span id="earnings">
-0.00
-</span>
-</h1>
-
-</div>
-
-</div>
-
-<!-- INFO -->
-
-<div class="info-box">
-
-<h2>
-Centro de trabajo VIP
-</h2>
-
-<p>
-
-Complete pedidos diarios para aumentar sus ingresos.
-Las ganancias se sincronizan automáticamente
-con el saldo principal y el historial de pedidos.
-
-</p>
-
-</div>
-
-<!-- NAVIGATION -->
-
-<div class="bottom-nav">
-
-<a href="vip.html">
-
-<span>🏠</span>
-Inicio
-
-</a>
-
-<a href="pedidos.html">
-
-<span>📦</span>
-Pedidos
-
-</a>
-
-<a href="trabajo.html"
-class="active">
-
-<span>💼</span>
-Trabajo
-
-</a>
-
-<a href="mi.html">
-
-<span>👤</span>
-Mi
-
-</a>
-
-</div>
-
-<script>
-
-/* BALANCE */
-
-let balance =
-parseFloat(
-localStorage.getItem("balance")
-|| 10
-);
-
-document.getElementById("balance")
-.innerText =
-balance.toFixed(2);
-
-/* ORDERS */
-
-let orders =
-parseInt(
-localStorage.getItem("vip1orders")
-|| 0
-);
-
-document.getElementById("orders")
-.innerText =
-orders + "/12";
-
-/* EARNINGS */
-
-let earnings =
-balance - 10;
-
-if(earnings < 0){
-earnings = 0;
-}
-
-document.getElementById("earnings")
-.innerText =
-earnings.toFixed(2);
-
-/* PROGRESS */
-
-let progress =
-(orders / 12) * 100;
-
-document.getElementById("progressBar")
-.style.width =
-progress + "%";
-
-</script>
 
 </body>
+
 </html>
