@@ -1,44 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Registro</title>
+<link rel="stylesheet" href="style.css">
+<title>Register</title>
 </head>
 
 <body>
 
-<h2>Registro</h2>
+<div class="card">
 
-<input id="name" placeholder="Nombre">
-<input id="phone" placeholder="Teléfono">
-<input id="pass" type="password" placeholder="Contraseña">
+<h2>Register</h2>
 
-<button onclick="register()">Crear</button>
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<input id="pass" type="password" placeholder="Password">
 
-<script>
+<button class="btn" onclick="register()">Create</button>
 
-function register(){
+</div>
 
-let users = JSON.parse(localStorage.getItem("users") || "[]");
-
-let user = {
-name: document.getElementById("name").value,
-phone: document.getElementById("phone").value,
-password: document.getElementById("pass").value,
-balance: 10,
-vip: 1
-};
-
-users.push(user);
-
-localStorage.setItem("users", JSON.stringify(users));
-
-alert("Cuenta creada");
-
-window.location.href="index.html";
-}
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
