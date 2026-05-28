@@ -1,140 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
-
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-/* BOX */
-
-.box{
-width:90%;
-max-width:380px;
-background:white;
-padding:20px;
-border-radius:16px;
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* TITLE */
-
-h2{
-text-align:center;
-color:#1565c0;
-margin-bottom:20px;
-}
-
-/* INPUT */
-
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ddd;
-border-radius:10px;
-outline:none;
-}
-
-/* BUTTON */
-
-button{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:none;
-border-radius:10px;
-background:#1565c0;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* TEXT */
-
-p{
-text-align:center;
-font-size:13px;
-margin-top:10px;
-}
-
-a{
-color:#1565c0;
-text-decoration:none;
-}
-
+body{margin:0;font-family:Arial;background:#1565c0;display:flex;justify-content:center;align-items:center;height:100vh;}
+.box{background:white;padding:20px;border-radius:12px;width:90%;max-width:350px;}
+input,button{width:100%;padding:10px;margin-top:10px;}
+button{background:#1565c0;color:white;border:none;}
 </style>
 </head>
 
 <body>
 
 <div class="box">
+<h2>Iniciar sesión</h2>
 
-<h2>Login</h2>
+<input id="phone" placeholder="Usuario o teléfono">
+<input id="pass" type="password" placeholder="Contraseña">
 
-<input type="text" id="phone" placeholder="Phone or Username">
-<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Entrar</button>
 
-<button onclick="login()">Login</button>
-
-<p>
-Don't have account? <a href="register.html">Register</a>
-</p>
-
+<p><a href="register.html">Crear cuenta</a></p>
 </div>
 
 <script>
 
 function login(){
 
-let phone = document.getElementById("phone").value;
-let password = document.getElementById("password").value;
-
-/* GET USERS */
-
 let users = JSON.parse(localStorage.getItem("users") || "[]");
 
-/* FIND USER */
+let phone = document.getElementById("phone").value;
+let pass = document.getElementById("pass").value;
 
-let user = users.find(u =>
-u.phone === phone && u.password === password
-);
+let user = users.find(u => u.phone === phone && u.password === pass);
 
 if(!user){
-alert("Invalid login");
+alert("Error de login");
 return;
 }
 
-/* SAVE CURRENT USER */
-
 localStorage.setItem("currentUser", JSON.stringify(user));
 
-localStorage.setItem("balance", user.balance);
-
-/* VIP DEFAULT */
-
-if(!localStorage.getItem("currentVIP")){
-localStorage.setItem("currentVIP", 0);
-}
-
-/* GO VIP PAGE */
-
-alert("Login successful");
-
-window.location.href = "vip.html";
-
+window.location.href="home.html";
 }
 
 </script>
