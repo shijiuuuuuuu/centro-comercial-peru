@@ -1,187 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#f3f6fb;
-padding-bottom:90px;
-}
-
-/* HEADER */
-
-.header{
-background:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-}
-
-.header h2{
-margin:0;
-color:#1565c0;
-}
-
-/* BOX */
-
-.box{
-margin:15px;
-background:white;
-padding:15px;
-border-radius:14px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin:15px;
-}
-
-.card{
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-.card h3{
-margin:0;
-font-size:13px;
-color:#666;
-}
-
-.card h2{
-margin-top:10px;
-color:#1565c0;
-}
-
-/* BUTTON */
-
-.btn{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#1565c0;
-color:white;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
-}
-
-/* NAV */
-
-.nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:10px;
-box-shadow:0 -2px 10px rgba(0,0,0,0.08);
-}
-
-.nav a{
-text-decoration:none;
-color:#666;
-font-size:12px;
-text-align:center;
-}
-
-.active{
-color:#1565c0;
-}
-
-</style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
 <h2>Dashboard</h2>
-<div>🔥</div>
-</div>
 
-<!-- STATS -->
-<div class="stats">
+<p>Balance: S/ <span id="bal"></span></p>
+<p>VIP: <span id="vip"></span></p>
 
-<div class="card">
-<h3>Balance</h3>
-<h2>S/ <span id="balance">0.00</span></h2>
-</div>
-
-<div class="card">
-<h3>VIP Level</h3>
-<h2 id="vip">VIP 0</h2>
-</div>
-
-</div>
-
-<!-- QUICK INFO -->
-<div class="box">
-
-<h3>Quick Info</h3>
-
-<p>Orders Completed: <b id="orders">0</b></p>
-
-<p>Today Earnings: S/ <b id="earnings">0.00</b></p>
-
-<button class="btn" onclick="goVIP()">
-Go to VIP
-</button>
-
-</div>
-
-<!-- NAV -->
-<div class="nav">
-
-<a class="active" href="home.html">🏠<br>Home</a>
-<a href="vip.html">⭐<br>VIP</a>
-<a href="pedidos.html">📦<br>Orders</a>
-<a href="mi.html">👤<br>Me</a>
-
-</div>
+<button onclick="goVIP()">VIP</button>
 
 <script>
 
-/* DATA */
+let user = JSON.parse(localStorage.getItem("currentUser"));
 
-let balance = parseFloat(localStorage.getItem("balance") || 10);
-let vip = parseInt(localStorage.getItem("currentVIP") || 0);
-let orders = parseInt(localStorage.getItem("vip1orders") || 0);
-let earnings = parseFloat(localStorage.getItem("vip1earnings") || 0);
-
-/* SHOW */
-
-document.getElementById("balance").innerText = balance.toFixed(2);
-document.getElementById("vip").innerText = "VIP " + vip;
-document.getElementById("orders").innerText = orders;
-document.getElementById("earnings").innerText = earnings.toFixed(2);
-
-/* NAV */
+document.getElementById("bal").innerText = user.balance;
+document.getElementById("vip").innerText = user.vip;
 
 function goVIP(){
-window.location.href = "vip.html";
+window.location.href="vip.html";
 }
 
 </script>
