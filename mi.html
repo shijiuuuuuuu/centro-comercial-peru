@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
 <meta charset="UTF-8">
@@ -20,12 +20,17 @@ padding-bottom:90px;
 .header{
 background:white;
 padding:18px;
-font-size:20px;
-font-weight:bold;
-color:#1565c0;
+display:flex;
+justify-content:space-between;
+align-items:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 position:sticky;
 top:0;
+}
+
+.header h2{
+margin:0;
+color:#1565c0;
 }
 
 /* BOX */
@@ -38,9 +43,9 @@ border-radius:14px;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* INFO */
+/* USER */
 
-.info{
+.user{
 display:flex;
 align-items:center;
 gap:12px;
@@ -83,29 +88,16 @@ color:red;
 font-weight:bold;
 }
 
-/* NAV */
+/* LANGUAGE */
 
-.nav{
+.lang{
 position:fixed;
-bottom:0;
-left:0;
-right:0;
+top:10px;
+right:10px;
 background:white;
-display:flex;
-justify-content:space-around;
-padding:10px;
-box-shadow:0 -2px 10px rgba(0,0,0,0.08);
-}
-
-.nav a{
-text-decoration:none;
-color:#666;
-font-size:12px;
-text-align:center;
-}
-
-.active{
-color:#1565c0;
+padding:8px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 </style>
@@ -114,109 +106,104 @@ color:#1565c0;
 
 <body>
 
+<!-- LANGUAGE SELECT -->
+<div class="lang">
+<select onchange="changeLang(this.value)">
+<option value="en">EN</option>
+<option value="es">ES</option>
+<option value="my">MY</option>
+<option value="zh">CN</option>
+</select>
+</div>
+
 <!-- HEADER -->
 <div class="header">
-Mi Account
+<h2 id="title">Mi Account</h2>
 </div>
 
 <!-- USER INFO -->
 <div class="box">
 
-<div class="info">
+<div class="user">
 <div class="avatar">👤</div>
-
 <div>
 <h3 id="name">User</h3>
 <p id="phone">-</p>
 </div>
-
 </div>
 
 </div>
 
 <!-- WALLET -->
 <div class="box">
-<h3>Wallet Balance</h3>
+<h3 id="walletText">Wallet Balance</h3>
 <h1>S/ <span id="balance">0.00</span></h1>
 </div>
 
-<!-- BANK -->
+<!-- BANK CONNECT -->
 <div class="box">
-<h3>Bank Connection</h3>
+
+<h3 id="bankTitle">Bank Connection</h3>
 
 <p id="bankStatus" class="lock">Not Connected</p>
+
+<input id="bankName" placeholder="Bank Name">
+<input id="accountNumber" placeholder="Account Number">
+<input id="country" placeholder="Country">
 
 <button class="btn" onclick="connectBank()">
 Connect Bank
 </button>
-</div>
 
-<!-- VIP STATUS -->
-<div class="box">
-<h3>VIP Status</h3>
-
-<p id="vip">VIP 0</p>
-<p id="orders">0/0 Orders</p>
 </div>
 
 <!-- WITHDRAW -->
 <div class="box">
 
-<h3>Withdraw</h3>
+<h3 id="withdrawTitle">Withdrawal</h3>
 
 <p id="withdrawMsg" class="lock">
-Complete orders + connect bank
+Complete VIP orders + connect bank first
 </p>
 
 <button class="btn" onclick="withdraw()">
-Withdraw Money
+Withdraw Now
 </button>
-
-</div>
-
-<!-- NAV -->
-<div class="nav">
-
-<a href="vip.html">🏠<br>Home</a>
-<a href="pedidos.html">📦<br>Orders</a>
-<a href="trabajo.html">💼<br>Work</a>
-<a class="active" href="mi.html">👤<br>Me</a>
 
 </div>
 
 <script>
 
-/* USER DATA */
-
+/* USER */
 let user = JSON.parse(localStorage.getItem("currentUser") || "{}");
 
 document.getElementById("name").innerText = user.name || "Guest";
 document.getElementById("phone").innerText = user.phone || "-";
 
-/* WALLET */
-
-let balance = parseFloat(localStorage.getItem("balance") || user.balance || 0);
+/* BALANCE */
+let balance = parseFloat(localStorage.getItem("balance") || 0);
 document.getElementById("balance").innerText = balance.toFixed(2);
 
-/* VIP */
-
-let vip = parseInt(localStorage.getItem("currentVIP") || 0);
-let completed = parseInt(localStorage.getItem("vip1orders") || 0);
-let limit = parseInt(localStorage.getItem("vipOrdersLimit") || 0);
-
-document.getElementById("vip").innerText = "VIP " + vip;
-document.getElementById("orders").innerText = completed + "/" + limit;
-
-/* BANK */
-
-let bank = localStorage.getItem("bankConnected");
-
+/* BANK CONNECT */
 function connectBank(){
 
-localStorage.setItem("bankConnected","true");
+let bank = {
+name: document.getElementById("bankName").value,
+account: document.getElementById("accountNumber").value,
+country: document.getElementById("country").value
+};
 
-document.getElementById("bankStatus").innerText = "Connected";
+if(!bank.name || !bank.account){
+alert("Fill bank details");
+return;
+}
+
+localStorage.setItem("bankConnected", JSON.stringify(bank));
+
+document.getElementById("bankStatus").innerText = "Connected ✔";
 document.getElementById("bankStatus").className = "ok";
+
+alert("Bank connected successfully");
 
 }
 
@@ -224,21 +211,21 @@ document.getElementById("bankStatus").className = "ok";
 
 function withdraw(){
 
-let bankConnected = localStorage.getItem("bankConnected");
+let bank = localStorage.getItem("bankConnected");
 let completed = parseInt(localStorage.getItem("vip1orders") || 0);
 let limit = parseInt(localStorage.getItem("vipOrdersLimit") || 0);
 
-if(!bankConnected){
+if(!bank){
 alert("Please connect bank first");
 return;
 }
 
 if(completed < limit){
-alert("Complete all orders first");
+alert("Complete all VIP orders first");
 return;
 }
 
-alert("Withdraw successful");
+alert("Withdrawal Successful ✔");
 
 /* RESET CYCLE */
 
@@ -249,6 +236,49 @@ let vip = parseInt(localStorage.getItem("currentVIP") || 0);
 localStorage.setItem("currentVIP", vip + 1);
 
 window.location.href = "vip.html";
+
+}
+
+/* LANGUAGE SYSTEM */
+
+function changeLang(lang){
+
+let text = {
+
+en:{
+title:"Mi Account",
+wallet:"Wallet Balance",
+bank:"Bank Connection",
+withdraw:"Withdrawal"
+},
+
+es:{
+title:"Mi Cuenta",
+wallet:"Saldo",
+bank:"Conexión Bancaria",
+withdraw:"Retiro"
+},
+
+my:{
+title:"အကောင့်",
+wallet:"ပိုက်ဆံအိတ်",
+bank:"ဘဏ်ချိတ်ဆက်ရန်",
+withdraw:"ငွေထုတ်ရန်"
+},
+
+zh:{
+title:"账户",
+wallet:"钱包余额",
+bank:"银行连接",
+withdraw:"提款"
+}
+
+};
+
+document.getElementById("title").innerText = text[lang].title;
+document.getElementById("walletText").innerText = text[lang].wallet;
+document.getElementById("bankTitle").innerText = text[lang].bank;
+document.getElementById("withdrawTitle").innerText = text[lang].withdraw;
 
 }
 
