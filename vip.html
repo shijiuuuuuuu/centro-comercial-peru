@@ -1,42 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>VIP</title>
+<link rel="stylesheet" href="style.css">
+<title>VIP System</title>
 </head>
 
 <body>
 
+<div class="card">
 <h2>VIP Orders</h2>
 
-<p id="count">0/12</p>
+<p id="count">0 / 12</p>
 
-<button onclick="doOrder()">Order</button>
+<button class="btn" onclick="doOrder()">Complete Order</button>
+</div>
 
-<script>
-
-let count = localStorage.getItem("orders") || 0;
-
-function update(){
-document.getElementById("count").innerText = count + "/12";
-}
-
-function doOrder(){
-
-if(count >= 12){
-alert("VIP completed");
-return;
-}
-
-count++;
-localStorage.setItem("orders",count);
-
-update();
-}
-
-update();
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
