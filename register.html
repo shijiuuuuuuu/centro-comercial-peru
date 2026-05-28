@@ -1,41 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-<title>Registro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
 
 <style>
 
 body{
+margin:0;
 font-family:Arial;
-background:#f5f5f5;
-padding:20px;
+background:#f3f6fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
 .box{
+width:90%;
 max-width:400px;
-margin:auto;
 background:white;
 padding:20px;
-border-radius:15px;
+border-radius:16px;
+box-shadow:0 4px 14px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+color:#1565c0;
 }
 
 input{
 width:100%;
 padding:12px;
-margin-top:10px;
-border:none;
+margin:8px 0;
+border:1px solid #ddd;
 border-radius:10px;
-background:#eee;
+outline:none;
 }
 
 button{
 width:100%;
 padding:12px;
-margin-top:15px;
-background:#28a745;
-color:white;
 border:none;
 border-radius:10px;
+background:#1565c0;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+p{
+text-align:center;
+font-size:13px;
+color:#666;
+}
+
+a{
+color:#1565c0;
+text-decoration:none;
 }
 
 </style>
@@ -45,19 +71,15 @@ border-radius:10px;
 
 <div class="box">
 
-<h2>Registro</h2>
+<h2>Register Account</h2>
 
-<input type="text" id="username" placeholder="Nombre de usuario">
+<input type="text" id="name" placeholder="Username">
+<input type="text" id="phone" placeholder="Phone Number">
+<input type="password" id="password" placeholder="Password">
 
-<input type="text" id="phone" placeholder="N煤mero de tel茅fono">
+<button onclick="register()">Create Account</button>
 
-<input type="password" id="password" placeholder="Contrase帽a">
-
-<input type="password" id="confirm" placeholder="Confirmar contrase帽a">
-
-<button onclick="register()">
-REGISTRARSE
-</button>
+<p>Already have account? <a href="index.html">Login</a></p>
 
 </div>
 
@@ -65,30 +87,51 @@ REGISTRARSE
 
 function register(){
 
-let username =
-document.getElementById("username").value;
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let password = document.getElementById("password").value;
 
-let phone =
-document.getElementById("phone").value;
-
-let password =
-document.getElementById("password").value;
-
-let confirm =
-document.getElementById("confirm").value;
-
-if(password != confirm){
-
-alert("Passwords do not match");
+if(!name || !phone || !password){
+alert("Please fill all fields");
 return;
-
 }
 
-localStorage.setItem("username", username);
-localStorage.setItem("phone", phone);
-localStorage.setItem("password", password);
+/* GET USERS */
 
-alert("Registro exitoso");
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+/* CHECK EXIST */
+
+let exist = users.find(u => u.phone === phone);
+
+if(exist){
+alert("User already exists");
+return;
+}
+
+/* CREATE USER */
+
+let newUser = {
+name: name,
+phone: phone,
+password: password,
+balance: 10,
+vipLevel: 0,
+ordersCompleted: 0,
+status: "active"
+};
+
+users.push(newUser);
+
+localStorage.setItem("users", JSON.stringify(users));
+
+/* SAVE CURRENT USER */
+
+localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+alert("Account created successfully");
+
+/* GO LOGIN */
 
 window.location.href = "index.html";
 
