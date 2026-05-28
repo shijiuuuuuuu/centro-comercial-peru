@@ -16,67 +16,22 @@ background:#f3f6fb;
 padding-bottom:100px;
 }
 
-/* TOPBAR */
-
 .topbar{
+background:white;
+padding:18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px;
-background:white;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 border-bottom-left-radius:20px;
 border-bottom-right-radius:20px;
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:bold;
 color:#1565c0;
 }
-
-/* LANGUAGE */
-
-.language-box{
-position:relative;
-}
-
-.globe-btn{
-width:45px;
-height:45px;
-border:none;
-border-radius:50%;
-background:#1565c0;
-color:white;
-font-size:22px;
-cursor:pointer;
-}
-
-.language-menu{
-display:none;
-position:absolute;
-right:0;
-top:55px;
-background:white;
-width:190px;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,0.15);
-z-index:999;
-}
-
-.language-menu div{
-padding:12px;
-border-bottom:1px solid #eee;
-cursor:pointer;
-font-size:14px;
-}
-
-.language-menu div:hover{
-background:#f2f4f8;
-}
-
-/* PROFILE */
 
 .profile{
 background:white;
@@ -86,44 +41,32 @@ border-radius:20px;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-.profile-top{
+.user{
 display:flex;
 align-items:center;
 gap:15px;
 }
 
 .avatar{
-width:80px;
-height:80px;
+width:75px;
+height:75px;
 border-radius:50%;
-border:3px solid #2196f3;
-object-fit:cover;
+background:#ddd;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
 }
 
 .user-info h2{
 margin:0;
-font-size:21px;
 color:#222;
 }
 
 .user-info p{
 margin-top:5px;
 color:#666;
-font-size:14px;
 }
-
-.upload-btn{
-margin-top:10px;
-background:#1565c0;
-color:white;
-border:none;
-padding:8px 14px;
-border-radius:10px;
-cursor:pointer;
-font-size:13px;
-}
-
-/* WALLET */
 
 .wallet{
 margin-top:20px;
@@ -133,54 +76,19 @@ border-radius:20px;
 color:white;
 }
 
-.wallet-title{
-font-size:14px;
-opacity:0.9;
+.wallet h3{
+margin:0;
+font-size:15px;
 }
 
 .balance{
-font-size:34px;
+font-size:36px;
 font-weight:bold;
 margin-top:10px;
 }
 
-.wallet-buttons{
-display:flex;
-gap:10px;
-margin-top:20px;
-}
-
-.wallet-buttons button{
-flex:1;
-padding:12px;
-border:none;
-border-radius:12px;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.recargar{
-background:#00c853;
-color:white;
-}
-
-.retirar{
-background:#ff7043;
-color:white;
-}
-
-/* MENU */
-
 .menu{
 padding:0 20px;
-}
-
-.menu-title{
-font-size:16px;
-font-weight:bold;
-color:#444;
-margin:20px 0 10px;
 }
 
 .menu-item{
@@ -193,109 +101,18 @@ justify-content:space-between;
 align-items:center;
 box-shadow:0 2px 8px rgba(0,0,0,0.05);
 cursor:pointer;
-transition:0.2s;
 }
-
-.menu-item:hover{
-background:#f8fbff;
-transform:translateY(-2px);
-}
-
-/* BANK CARD */
-
-.bank-card{
-background:white;
-margin:20px;
-padding:20px;
-border-radius:20px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-display:none;
-}
-
-.bank-card h3{
-margin-top:0;
-color:#1565c0;
-}
-
-.bank-item{
-margin-top:10px;
-font-size:15px;
-color:#444;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.modal-content{
-background:white;
-width:90%;
-max-width:420px;
-border-radius:20px;
-padding:20px;
-}
-
-.modal-content h2{
-margin-top:0;
-color:#1565c0;
-}
-
-.modal-content label{
-display:block;
-margin-top:14px;
-font-size:14px;
-font-weight:bold;
-color:#444;
-}
-
-.modal-content input,
-.modal-content select{
-width:100%;
-padding:12px;
-margin-top:5px;
-border:1px solid #ddd;
-border-radius:10px;
-background:#f7f7f7;
-}
-
-.confirm-btn{
-width:100%;
-padding:14px;
-margin-top:20px;
-border:none;
-border-radius:12px;
-background:#1565c0;
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* LOGOUT */
 
 .logout{
-margin:25px 20px;
+margin:20px;
+padding:16px;
 background:#111;
 color:white;
-padding:16px;
 text-align:center;
 border-radius:16px;
 font-weight:bold;
 cursor:pointer;
 }
-
-/* BOTTOM NAV */
 
 .bottom-nav{
 position:fixed;
@@ -331,61 +148,25 @@ color:#1565c0 !important;
 
 <body>
 
-<!-- TOPBAR -->
-
 <div class="topbar">
 
 <div class="logo">
 Centro Comercial
 </div>
 
-<div class="language-box">
-
-<button class="globe-btn"
-onclick="toggleLanguages()">
+<div>
 🌐
-</button>
-
-<div class="language-menu"
-id="languageMenu">
-
-<div onclick="changeLanguage('es')">
-🇪🇸 Español
-</div>
-
-<div onclick="changeLanguage('en')">
-🇺🇸 English
-</div>
-
-<div onclick="changeLanguage('my')">
-🇲🇲 Myanmar
-</div>
-
-<div onclick="changeLanguage('zh')">
-🇨🇳 中文
-</div>
-
-<div onclick="changeLanguage('jp')">
-🇯🇵 日本語
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-<!-- PROFILE -->
 
 <div class="profile">
 
-<div class="profile-top">
+<div class="user">
 
-<img
-class="avatar"
-id="avatarPreview"
-src="https://i.imgur.com/8Km9tLL.png"
->
+<div class="avatar">
+👤
+</div>
 
 <div class="user-info">
 
@@ -397,23 +178,15 @@ Usuario
 999999999
 </p>
 
-<button class="upload-btn"
-onclick="uploadAvatar()">
-Cambiar foto
-</button>
-
 </div>
 
 </div>
-
-<!-- WALLET -->
 
 <div class="wallet">
 
-<div class="wallet-title"
-id="walletTitle">
+<h3>
 Saldo disponible
-</div>
+</h3>
 
 <div class="balance">
 S/
@@ -422,193 +195,43 @@ S/
 </span>
 </div>
 
-<div class="wallet-buttons">
-
-<button class="recargar"
-id="recargarBtn">
-Recargar
-</button>
-
-<button class="retirar"
-id="retirarBtn">
-Retirar
-</button>
-
 </div>
 
 </div>
-
-</div>
-
-<!-- BANK INFO -->
-
-<div class="bank-card"
-id="bankCard">
-
-<h3 id="bankInfoTitle">
-Información bancaria
-</h3>
-
-<div class="bank-item">
-<strong>Banco:</strong>
-<span id="savedBank"></span>
-</div>
-
-<div class="bank-item">
-<strong>Cuenta:</strong>
-<span id="savedAccount"></span>
-</div>
-
-<div class="bank-item">
-<strong>Nombre:</strong>
-<span id="savedName"></span>
-</div>
-
-<div class="bank-item">
-<strong>CCI:</strong>
-<span id="savedCCI"></span>
-</div>
-
-</div>
-
-<!-- MENU -->
 
 <div class="menu">
 
-<div class="menu-title">
-Información
-</div>
-
-<div class="menu-item"
-onclick="openBankModal()">
-
-<span id="bankLinkText">
-🏦 Información de enlace
-</span>
-
-<span>›</span>
-
-</div>
-
 <div class="menu-item">
-<span id="m1">
-📄 Registros de recarga
-</span>
+<span>🏦 Información bancaria</span>
 <span>›</span>
 </div>
 
 <div class="menu-item">
-<span id="m2">
-💸 Registros de retiro
-</span>
+<span>📄 Registros de recarga</span>
 <span>›</span>
 </div>
 
 <div class="menu-item">
-<span id="m3">
-🧾 Registros de trabajo
-</span>
+<span>💸 Registros de retiro</span>
 <span>›</span>
 </div>
 
 <div class="menu-item">
-<span id="m4">
-🛠 Servicios
-</span>
+<span>🧾 Historial de órdenes</span>
 <span>›</span>
 </div>
 
 <div class="menu-item">
-<span id="m5">
-🔔 Notificaciones
-</span>
-<span>›</span>
-</div>
-
-<div class="menu-item">
-<span id="m6">
-⚙️ Configuración
-</span>
-<span>›</span>
-</div>
-
-<div class="menu-item">
-<span id="m7">
-🌐 Idioma
-</span>
+<span>⚙️ Configuración</span>
 <span>›</span>
 </div>
 
 </div>
-
-<!-- MODAL -->
-
-<div class="modal"
-id="bankModal">
-
-<div class="modal-content">
-
-<h2 id="modalTitle">
-Vincular cuenta bancaria
-</h2>
-
-<label id="labelBank">
-Elegir banco
-</label>
-
-<select id="bank">
-
-<option>BCP</option>
-<option>Interbank</option>
-<option>BBVA</option>
-<option>Scotiabank</option>
-
-</select>
-
-<label id="labelAccount">
-Cuenta bancaria
-</label>
-
-<input type="text"
-id="account">
-
-<label id="labelName">
-Nombre
-</label>
-
-<input type="text"
-id="owner">
-
-<label id="labelCCI">
-CCI
-</label>
-
-<input type="text"
-id="cci">
-
-<button class="confirm-btn"
-id="confirmBtn"
-onclick="saveBankInfo()">
-
-Confirmar
-
-</button>
-
-</div>
-
-</div>
-
-<!-- LOGOUT -->
 
 <div class="logout"
-id="logoutBtn"
 onclick="logout()">
-
 CERRAR SESIÓN
-
 </div>
-
-<!-- BOTTOM NAV -->
 
 <div class="bottom-nav">
 
@@ -645,170 +268,13 @@ localStorage.getItem("username") || "Usuario";
 document.getElementById("showPhone").innerText =
 localStorage.getItem("phone") || "999999999";
 
-/* BALANCE */
+/* LIVE BALANCE */
 
-document.getElementById("balance").innerText =
+let balance =
 localStorage.getItem("balance") || "10.00";
 
-/* AVATAR */
-
-if(localStorage.getItem("avatar")){
-
-document.getElementById("avatarPreview").src =
-localStorage.getItem("avatar");
-
-}
-
-/* LANGUAGE MENU */
-
-function toggleLanguages(){
-
-let menu =
-document.getElementById("languageMenu");
-
-menu.style.display =
-menu.style.display === "block"
-? "none"
-: "block";
-
-}
-
-/* CHANGE LANGUAGE */
-
-function changeLanguage(lang){
-
-if(lang === "en"){
-
-document.getElementById("walletTitle")
-.innerText = "Available Balance";
-
-document.getElementById("recargarBtn")
-.innerText = "Recharge";
-
-document.getElementById("retirarBtn")
-.innerText = "Withdraw";
-
-document.getElementById("bankLinkText")
-.innerText = "🏦 Bank Link Information";
-
-document.getElementById("logoutBtn")
-.innerText = "LOG OUT";
-
-}
-
-if(lang === "my"){
-
-document.getElementById("walletTitle")
-.innerText = "လက်ကျန်ငွေ";
-
-document.getElementById("recargarBtn")
-.innerText = "ငွေဖြည့်";
-
-document.getElementById("retirarBtn")
-.innerText = "ငွေထုတ်";
-
-document.getElementById("bankLinkText")
-.innerText = "🏦 ဘဏ်ချိတ်ဆက်မှု";
-
-document.getElementById("logoutBtn")
-.innerText = "အကောင့်ထွက်ရန်";
-
-}
-
-}
-
-/* OPEN MODAL */
-
-function openBankModal(){
-
-document.getElementById("bankModal")
-.style.display = "flex";
-
-}
-
-/* SAVE BANK */
-
-function saveBankInfo(){
-
-let bank =
-document.getElementById("bank").value;
-
-let account =
-document.getElementById("account").value;
-
-let owner =
-document.getElementById("owner").value;
-
-let cci =
-document.getElementById("cci").value;
-
-/* SAVE */
-
-localStorage.setItem("bank", bank);
-localStorage.setItem("account", account);
-localStorage.setItem("owner", owner);
-localStorage.setItem("cci", cci);
-
-/* SHOW */
-
-document.getElementById("savedBank").innerText =
-bank;
-
-document.getElementById("savedAccount").innerText =
-account;
-
-document.getElementById("savedName").innerText =
-owner;
-
-document.getElementById("savedCCI").innerText =
-cci;
-
-document.getElementById("bankCard")
-.style.display = "block";
-
-document.getElementById("bankModal")
-.style.display = "none";
-
-}
-
-/* LOAD BANK */
-
-if(localStorage.getItem("bank")){
-
-document.getElementById("bankCard")
-.style.display = "block";
-
-document.getElementById("savedBank").innerText =
-localStorage.getItem("bank");
-
-document.getElementById("savedAccount").innerText =
-localStorage.getItem("account");
-
-document.getElementById("savedName").innerText =
-localStorage.getItem("owner");
-
-document.getElementById("savedCCI").innerText =
-localStorage.getItem("cci");
-
-}
-
-/* AVATAR UPLOAD */
-
-function uploadAvatar(){
-
-let url =
-prompt("Ingrese URL de imagen");
-
-if(url){
-
-document.getElementById("avatarPreview").src =
-url;
-
-localStorage.setItem("avatar", url);
-
-}
-
-}
+document.getElementById("balance").innerText =
+balance;
 
 /* LOGOUT */
 
