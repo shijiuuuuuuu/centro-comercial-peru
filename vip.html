@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>VIP CENTER</title>
+<title>Centro Comercial Per煤 - VIP</title>
 
 <style>
 
@@ -15,140 +12,160 @@ body{
 margin:0;
 font-family:Arial;
 background:#f3f6fb;
-padding-bottom:100px;
+padding-bottom:90px;
 }
 
 /* HEADER */
 
-.header{
+.topbar{
 background:white;
-padding:20px;
+padding:18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:999;
+border-bottom-left-radius:20px;
+border-bottom-right-radius:20px;
 }
 
 .logo{
-font-size:26px;
+font-size:24px;
 font-weight:bold;
 color:#1565c0;
 }
 
-/* WALLET */
+/* BALANCE */
 
-.wallet-box{
+.balance-box{
 margin:20px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
-padding:24px;
-border-radius:24px;
+background:linear-gradient(135deg,#1565c0,#1e88e5);
+padding:20px;
+border-radius:20px;
 color:white;
-box-shadow:0 6px 18px rgba(0,0,0,0.12);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
-.wallet-box h3{
+.balance-box h2{
 margin:0;
-font-size:15px;
+font-size:16px;
 opacity:0.9;
 }
 
-.wallet-box h1{
-margin-top:12px;
-font-size:42px;
-}
-
-/* TASK COUNTER */
-
-.task-box{
-margin:20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.task-card{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 2px 12px rgba(0,0,0,0.06);
-text-align:center;
-}
-
-.task-card h3{
-margin:0;
-font-size:14px;
-color:#666;
-}
-
-.task-card h2{
+.balance{
+font-size:38px;
+font-weight:bold;
 margin-top:10px;
-color:#1565c0;
+}
+
+/* USER */
+
+.user-box{
+margin-top:15px;
+font-size:14px;
+line-height:24px;
 }
 
 /* VIP GRID */
 
 .vip-grid{
-padding:20px;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:18px;
+gap:15px;
+padding:20px;
 }
 
 /* VIP CARD */
 
 .vip-card{
 background:white;
-border-radius:24px;
-padding:20px;
-box-shadow:0 4px 16px rgba(0,0,0,0.08);
-}
-
-.vip-level{
-display:inline-block;
-padding:6px 14px;
-background:#1565c0;
-color:white;
 border-radius:20px;
-font-size:13px;
-margin-bottom:12px;
+padding:18px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+transition:0.2s;
+position:relative;
+overflow:hidden;
 }
 
-.vip-card h2{
-margin:0;
+.vip-card:hover{
+transform:translateY(-4px);
+}
+
+.vip-card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(
+45deg,
+transparent,
+rgba(255,255,255,0.4),
+transparent
+);
+transform:rotate(25deg);
+animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+0%{
+transform:translateX(-100%) rotate(25deg);
+}
+100%{
+transform:translateX(100%) rotate(25deg);
+}
+}
+
+.vip-title{
 font-size:22px;
+font-weight:bold;
+color:#1565c0;
 }
 
-.vip-card p{
+.vip-profit{
 margin-top:10px;
-color:#666;
-font-size:14px;
-line-height:1.7;
-}
-
-.vip-info{
-margin-top:14px;
-display:flex;
-justify-content:space-between;
-font-size:14px;
+font-size:15px;
+color:#444;
 }
 
 .vip-btn{
+margin-top:15px;
 width:100%;
-padding:15px;
-margin-top:18px;
+padding:12px;
 border:none;
-border-radius:16px;
-background:linear-gradient(135deg,#1565c0,#42a5f5);
+border-radius:12px;
+background:#1565c0;
 color:white;
-font-size:16px;
+font-size:15px;
 font-weight:bold;
 cursor:pointer;
 }
 
-/* NAVIGATION */
+/* TASK */
+
+.task-box{
+background:white;
+margin:0 20px 20px;
+padding:18px;
+border-radius:18px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.task-title{
+font-size:16px;
+font-weight:bold;
+color:#444;
+}
+
+.task-count{
+margin-top:10px;
+font-size:26px;
+font-weight:bold;
+color:#1565c0;
+}
+
+/* BOTTOM NAV */
 
 .bottom-nav{
 position:fixed;
@@ -180,39 +197,56 @@ color:#1565c0 !important;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- TOPBAR -->
 
-<div class="header">
+<div class="topbar">
 
 <div class="logo">
-VIP CENTER
+Centro Comercial
 </div>
 
 <div>
-🔥
+馃寪
 </div>
 
 </div>
 
-<!-- WALLET -->
+<!-- BALANCE -->
 
-<div class="wallet-box">
+<div class="balance-box">
 
-<h3>
+<h2>
 Saldo disponible
-</h3>
+</h2>
 
-<h1>
+<div class="balance">
 S/
 <span id="balance">
 10.00
 </span>
-</h1>
+</div>
+
+<div class="user-box">
+
+<div>
+馃懁
+<span id="showUser">
+Usuario
+</span>
+</div>
+
+<div>
+馃摫
+<span id="showPhone">
+999999999
+</span>
+</div>
+
+</div>
 
 </div>
 
@@ -220,31 +254,13 @@ S/
 
 <div class="task-box">
 
-<div class="task-card">
-
-<h3>
-VIP Actual
-</h3>
-
-<h2 id="currentVip">
-VIP0
-</h2>
-
+<div class="task-title">
+脫rdenes completadas
 </div>
 
-<div class="task-card">
-
-<h3>
-Ganancias
-</h3>
-
-<h2>
-S/
-<span id="earnings">
-0.00
-</span>
-</h2>
-
+<div class="task-count"
+id="taskCount">
+0
 </div>
 
 </div>
@@ -253,473 +269,231 @@ S/
 
 <div class="vip-grid">
 
-<!-- VIP1 -->
+<!-- VIP 1 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP1
+<div class="vip-title">
+VIP 1
 </div>
 
-<h2>
-12 / 12 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 30</strong>
-</p>
-
-<p>
-Debe completar las 12 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 8 - 12
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 5
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-1,
-30,
-12,
-'vip1.html'
-)">
-
-INICIAR VIP1
-
+<button
+class="vip-btn"
+onclick="completeOrder(5)">
+Ordenar
 </button>
 
 </div>
 
-
-
-
-
-<!-- VIP2 -->
+<!-- VIP 2 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP2
+<div class="vip-title">
+VIP 2
 </div>
 
-<h2>
-26 / 26 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 50</strong>
-</p>
-
-<p>
-Debe completar las 26 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 15 - 20
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 10
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-2,
-50,
-26,
-'vip2.html'
-)">
-
-INICIAR VIP2
-
+<button
+class="vip-btn"
+onclick="completeOrder(10)">
+Ordenar
 </button>
 
 </div>
 
-
-
-
-
-<!-- VIP3 -->
+<!-- VIP 3 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP3
+<div class="vip-title">
+VIP 3
 </div>
 
-<h2>
-36 / 36 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 100</strong>
-</p>
-
-<p>
-Debe completar las 36 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 25 - 35
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 20
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-3,
-100,
-36,
-'vip3.html'
-)">
-
-INICIAR VIP3
-
+<button
+class="vip-btn"
+onclick="completeOrder(20)">
+Ordenar
 </button>
 
 </div>
 
-
-
-
-
-<!-- VIP4 -->
+<!-- VIP 4 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP4
+<div class="vip-title">
+VIP 4
 </div>
 
-<h2>
-48 / 48 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 300</strong>
-</p>
-
-<p>
-Debe completar las 48 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 50 - 70
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 40
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-4,
-300,
-48,
-'vip4.html'
-)">
-
-INICIAR VIP4
-
+<button
+class="vip-btn"
+onclick="completeOrder(40)">
+Ordenar
 </button>
 
 </div>
 
-
-
-
-
-<!-- VIP5 -->
+<!-- VIP 5 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP5
+<div class="vip-title">
+VIP 5
 </div>
 
-<h2>
-60 / 60 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 500</strong>
-</p>
-
-<p>
-Debe completar las 60 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 80 - 100
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 80
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-5,
-500,
-60,
-'vip5.html'
-)">
-
-INICIAR VIP5
-
+<button
+class="vip-btn"
+onclick="completeOrder(80)">
+Ordenar
 </button>
 
 </div>
 
-
-
-
-
-<!-- VIP6 -->
+<!-- VIP 6 -->
 
 <div class="vip-card">
 
-<div class="vip-level">
-VIP6
+<div class="vip-title">
+VIP 6
 </div>
 
-<h2>
-70 / 70 Órdenes
-</h2>
-
-<p>
-Saldo requerido:
-<strong>S/ 1000</strong>
-</p>
-
-<p>
-Debe completar las 70 órdenes para retirar.
-</p>
-
-<div class="vip-info">
-
-<span>
-Ganancia
-</span>
-
-<span>
-S/ 120 - 150
-</span>
-
+<div class="vip-profit">
+Ganancia: S/ 150
 </div>
 
-<button class="vip-btn"
-onclick="startVIP(
-6,
-1000,
-70,
-'vip6.html'
-)">
-
-INICIAR VIP6
-
+<button
+class="vip-btn"
+onclick="completeOrder(150)">
+Ordenar
 </button>
 
 </div>
 
 </div>
 
-<!-- NAVIGATION -->
+<!-- BOTTOM NAV -->
 
 <div class="bottom-nav">
 
 <a href="vip.html"
 class="active">
-
-<span>🏠</span>
+<span>馃彔</span>
 Inicio
-
 </a>
 
 <a href="pedidos.html">
-
-<span>📦</span>
+<span>馃摝</span>
 Pedidos
-
 </a>
 
 <a href="trabajo.html">
-
-<span>💼</span>
+<span>馃捈</span>
 Trabajo
-
 </a>
 
 <a href="mi.html">
-
-<span>👤</span>
+<span>馃懁</span>
 Mi
-
 </a>
 
 </div>
 
 <script>
 
+/* USER INFO */
+
+document.getElementById("showUser").innerText =
+localStorage.getItem("username") || "Usuario";
+
+document.getElementById("showPhone").innerText =
+localStorage.getItem("phone") || "999999999";
+
 /* BALANCE */
 
 let balance =
-parseFloat(
-localStorage.getItem("balance")
-|| 10
-);
+parseFloat(localStorage.getItem("balance")) || 10;
 
-document.getElementById("balance")
-.innerText =
+document.getElementById("balance").innerText =
 balance.toFixed(2);
 
-/* EARNINGS */
+/* TASK COUNT */
 
-let earnings =
-balance - 10;
+let orders =
+parseInt(localStorage.getItem("orders")) || 0;
 
-if(earnings < 0){
-earnings = 0;
-}
+document.getElementById("taskCount").innerText =
+orders;
 
-document.getElementById("earnings")
-.innerText =
-earnings.toFixed(2);
+/* COMPLETE ORDER */
 
-/* CURRENT VIP */
+function completeOrder(amount){
 
-let currentVIP =
-localStorage.getItem("currentVIP")
-|| "0";
+let currentBalance =
+parseFloat(localStorage.getItem("balance")) || 10;
 
-document.getElementById("currentVip")
-.innerText =
-"VIP" + currentVIP;
+currentBalance += amount;
 
-/* VIP START */
-
-function startVIP(
-vip,
-required,
-orders,
-page
-){
-
-let balance =
-parseFloat(
-localStorage.getItem("balance")
-|| 0
+localStorage.setItem(
+"balance",
+currentBalance.toFixed(2)
 );
 
-/* CHECK BALANCE */
+document.getElementById("balance").innerText =
+currentBalance.toFixed(2);
 
-if(balance < required){
+/* ORDER COUNT */
+
+let currentOrders =
+parseInt(localStorage.getItem("orders")) || 0;
+
+currentOrders++;
+
+localStorage.setItem(
+"orders",
+currentOrders
+);
+
+document.getElementById("taskCount").innerText =
+currentOrders;
+
+/* HISTORY */
+
+let history =
+JSON.parse(localStorage.getItem("history")) || [];
+
+history.push({
+amount:amount,
+date:new Date().toLocaleString()
+});
+
+localStorage.setItem(
+"history",
+JSON.stringify(history)
+);
 
 alert(
-
-"Saldo insuficiente\n\n" +
-
-"VIP" + vip +
-
-" requiere mínimo S/ " +
-
-required
-
+"Orden completada + S/ " + amount
 );
-
-return;
-
-}
-
-/* CHECK WITHDRAW */
-
-let withdrawDone =
-localStorage.getItem("withdrawDone");
-
-if(
-withdrawDone === "false"
-&&
-localStorage.getItem("currentVIP")
-){
-
-alert(
-
-"Debe completar y retirar el nivel anterior"
-
-);
-
-return;
-
-}
-
-/* SAVE VIP */
-
-localStorage.setItem(
-"currentVIP",
-vip
-);
-
-localStorage.setItem(
-"vipRequired",
-required
-);
-
-localStorage.setItem(
-"vipOrdersLimit",
-orders
-);
-
-localStorage.setItem(
-"vipOrdersCompleted",
-0
-);
-
-localStorage.setItem(
-"withdrawUnlocked",
-"false"
-);
-
-localStorage.setItem(
-"withdrawDone",
-"false"
-);
-
-/* REDIRECT */
-
-window.location.href = page;
 
 }
 
